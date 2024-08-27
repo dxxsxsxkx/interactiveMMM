@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: apsa_funding.aux
+The style file: apalike.bst
+Database file #1: ../Reference.bib
+Warning--entry type for "reedsmith2018" isn't style-file defined
+--line 856 of file ../Reference.bib
+You've used 22 entries,
+            1935 wiz_defined-function locations,
+            602 strings with 7634 characters,
+and the built_in function-call counts, 8447 in all, are:
+= -- 852
+> -- 295
+< -- 20
++ -- 100
+- -- 92
+* -- 689
+:= -- 1462
+add.period$ -- 68
+call.type$ -- 22
+change.case$ -- 155
+chr.to.int$ -- 20
+cite$ -- 22
+duplicate$ -- 334
+empty$ -- 617
+format.name$ -- 134
+if$ -- 1670
+int.to.chr$ -- 3
+int.to.str$ -- 0
+missing$ -- 22
+newline$ -- 112
+num.names$ -- 70
+pop$ -- 124
+preamble$ -- 1
+purify$ -- 154
+quote$ -- 0
+skip$ -- 258
+stack$ -- 0
+substring$ -- 613
+swap$ -- 43
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 128
+warning$ -- 0
+while$ -- 78
+width$ -- 0
+write$ -- 286
+(There was 1 warning)

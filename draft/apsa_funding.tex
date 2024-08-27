@@ -1,0 +1,169 @@
+\documentclass[a4paper, 12pt]{article}
+\title{
+	Research Statement: Youth Representation and Parties' Nomination Strategies in Mixed-Member Electoral Systems
+}
+\author{Dai Sasaki (The University of Tokyo)}
+\date{16 June, 2024}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{chngcntr}
+\usepackage{colortbl}
+\usepackage{dcolumn}
+\usepackage{floatrow}
+\usepackage{geometry}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{natbib}
+\usepackage[normalem]{ulem}
+\usepackage{ntheorem}
+\usepackage{pdflscape}
+\usepackage{rotating}
+\usepackage{setspace}
+\usepackage{subfigure}
+\usepackage{tabularx}
+\usepackage{threeparttable}
+\usepackage[numbib, nottoc, notlot, notlof]{tocbibind}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+
+% page styling
+\geometry{
+  a4paper,
+  left=1in,
+  right=1in,
+  bottom=1in,
+  top=1in
+}
+\pagestyle{plain}
+\pagenumbering{arabic}
+\linespread{1.5}
+\hypersetup{
+  colorlinks,
+  linkcolor={red!50!black},
+  citecolor={blue!50!black},
+  urlcolor={blue!80!black}
+}
+
+% command definition
+\newlength{\spacebox}
+\settowidth{\spacebox}{012345678901}
+\newcommand{\sepspace}{\vspace*{2em}}
+\newcommand{\sepspacesmall}{\vspace*{0.3em}}
+\theoremseparator{:}
+\newtheorem{hyp}{Hypothesis}
+\counterwithin*{hyp}{section}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{Background and Theory}
+
+Young citizens are underrepresented in parliaments across developed democracies \citep{stockemer2018age, stockemer_introducing_2022, stockemer_youth_2022, stockemer_age_2023, stockemer2023young}. The lack of young representatives might have severe consequences for environmental politics because environmental issues disproportionately impact different generations. While younger generations are expected to bear the most severe consequences of climate change in the future, they are not adequately represented in decision-making processes. 
+
+Despite a recent surge of research on youth underrepresentation, we still need explanations of how young politicians are hindered from entering parliament in a specific context. A plausible explanation, voter discrimination, has consistently been counter-argued \citep{eshima2022just, horiuchi2020identifying, mcclean2022too}. Experimental studies have found that voters are at least as favorable toward young candidates as older candidates. Other studies argue that political institutions matter, claiming that young citizens are more represented under PR electoral systems or lower age thresholds for candidacy \citep{joshi2013representation, stockemer2018age}. However, these studies only conduct cross-national comparisons and do not provide detailed explanations and evidence as to the mechanisms of how a particular class of institutions promotes youth representation. 
+
+This study reveals the impact of electoral systems on the underrepresentation of young citizens using the case of Japan. Specifically, I show that the representational advantages of PR systems, namely the enhancement of minority representation, can be lost under mixed-member systems. PR systems are generally said to promote minority representation, and the youth is no exception. Mixed member systems are designed to incorporate the merits of both majoritarian and proportional systems and are expected to promote youth representation by design. However, PR systems, once incorporated in a mixed member system, may not be able to demonstrate their original representational advantages without proper institutional arrangement. 
+
+In the case of Japan, I argue that dual nomination in single-member districts (SMDs) and PR blocks contributes to the underrepresentation of the younger population. Japan has a mixed-member electoral system for its lower house, a system that elects legislators both from SMDs and closed party lists. Dual nomination, also known as dual listing \citep{reed2022}, is an interaction between the two tiers of the system that allows parties to nominate candidates simultaneously in an SMD district and a PR block. Dual-nominated candidates have two opportunities for election: even if they lose in their district, they may be elected through the PR tier if they are ranked high enough. Thus, parties can give their SMD candidates an insurance ticket and an opportunity to secure an election even if they lose in their district.
+
+Seniority matters under dual nomination. Parties seeking not only votes but also policies prioritize their senior members because they have more political resources than junior politicians and can act more effectively in parliamentary activities and policy formation. When dual nomination is allowed, parties' nomination strategies for the PR tier revolve around two options: 1. Provide insurance to SMD candidates, and 2. Nominate new candidates. Since political parties have limited resources, they first predict the obtainable number of seats and then consider how to allocate those seats to their candidates. In this situation, the options 1. and 2. become a trade-off. Therefore, if parties attempt to increase the electability of their SMD candidates, they cannot nominate new candidates in the PR tier, and the representational benefits of the PR system would not be utilized. 
+
+I test the following hypotheses: 
+
+\begin{enumerate}
+
+	\item \textbf{The age composition of PR candidates is not different from that of SMD candidates.} This hypothesis posits that the representational benefit of the PR tier is not pronounced even at the pre-election stage. 
+	
+	\item For PR candidates, 
+	
+	\begin{enumerate}
+		\item \textbf{There is no significant relationship between candidates' age and list positions, or older candidates are placed higher on the list. }
+		
+		\item \textbf{Senior candidates are placed higher on the list.}
+		
+		\item \textbf{Dual-listed candidates are placed higher on the list.}
+		
+	Taken together, these hypotheses state that candidate listing in the PR tier does not favor younger candidates. 
+		
+	\end{enumerate}
+
+	\item Without dual nomination, 
+	
+	\begin{enumerate}
+	
+		\item \textbf{Younger candidates are placed higher on the list. }
+		
+		\item \textbf{There is no significant relationship between candidates' seniority and list positions, or senior candidates are placed lower on the list. }
+	\end{enumerate}
+
+\end{enumerate}
+
+\noindent In other words, I hypothesize that the relationship between age and list rank and that between seniority and list rank are flipped in the absence of dual nomination. 
+
+\section{Data and Method}
+
+I test my hypotheses using the Reed-Smith Japanese House of Representatives Elections Dataset (JHRED), which contains information on all post-WW2 candidates in the Japanese lower house election \citep{reedsmith2018}. I examine the nomination patterns of all PR candidates in normal elections between 1994 and 2017. 
+
+I operationalize my dependent variable, candidates' list positions, in two different ways. First, I use the list rank of candidates in the PR list, a straightforward measure of candidates' rank. Second, I use the rank electability index, a three-point scale variable indicating how likely the party expects a candidate in the rank to be elected. This index is based on a latent, continuous variable that takes a specific value depending on each election, district, and party. 
+
+The rank electability index is intended to capture the heterogeneity in the value of the same list rank. Even if two candidates are given the same list rank, their election probabilities depend on when and where they run and to which party they belong. For example, being ranked 10th in a list for the Kinki block connotes a different electability from being ranked 10th in the Shikoku block because the former has a larger magnitude. Also, ranking 10th in a Liberal Democratic Party's list would be more valuable than ranking 10th in a minor party's list.
+
+I follow \citet{buisseret2022party} to construct the index, reproducing parties' decision-making process based on the past election information available to them. \footnotemark{} For each rank $k$ in party $p$'s list in the district $i$ in the election $t$, suppose a temporal relationship between its electabilities. The following equation relates a variable $PropElected^k_{t,i,p}$, indicating the proportion of elected candidates among those ranked $k$th on party $p$'s list in $i$, to the number of seats obtained in the same district in the previous election: 
+
+\footnotetext{An alternative operationalization is to approximate each rank's electability by the number of seats a party obtained in the previous election \citep{auer2024, cox2021moral}. It corresponds to $N_{t-1, i, p}$ in the current setting. My model provides a natural extension to that approximation, as \citet{buisseret2022party} points out.}
+
+\begin{equation} \label{eq:rankReg}
+PropElected^{k}_{t, i, p} = \alpha^k N_{t-1, i, p}  + \beta^k \mathbf{X}^{k}_{t,i,p}, 
+\end{equation}
+
+\noindent where $\mathbf{X^k_{t,i,p}}$ is a vector of covariates affecting parties' evaluation of the rank $k$. I used proportions of elected candidates among those ranked $k$th to account for dual nomination.\footnotemark{} I include two variables in the vector $\mathbf{X^k_{t,i,p}}$: district magnitude at $t$ and the number of candidates party $p$ is nominating for the district. I chose these variables to be consistent with the types of information parties possess before they nominate candidates. 
+
+% Elaborate
+% The original paper focuses on the pure PR system. 
+\footnotetext{
+  The model specification in the original paper is slightly different from the one I use because the original article focuses on a nationwide, pure PR system. Specifically, \citet{buisseret2022party} operationalizes rank electability as follows: for each ballot $k$ in on party $p$'s list in the election $t$ with the total number of districts 50, suppose a temporal relationship, 
+  \[
+    D^k_{p,t} = \sum_{k = 1}^{50} \delta^{k} D^k_{p, t-1} + \mathbf{X}^k_{p, t-1} \gamma + \sum_{k = 1}^{50} \lambda^k D^k_{p, t-2} + \mathbf{X}^k_{p, t-2}, 
+  \]
+  where $D^k_{p,t}$ is a binary variable that takes the value 1 if party $p$ won the rank $p$ in the election $t$. The two operationalizations differ in that I use the number of seats the party obtained in an election instead of the binary variable, mainly because parties can win two or more seats with a single rank $p$.
+}
+
+Fitting the equation \ref{eq:rankReg} and estimating it via OLS (ordinary least squares), I obtain fitted values for $\alpha$ and $\beta$. Using this, one can calculate predicted probabilities of winning using equation \ref{eq:rankPred}: 
+
+\begin{equation} \label{eq:rankPred}
+\hat{PropElected}^k_{t, i, p} = \hat\alpha^k N_{t-1, i, p} + \hat\beta^k \mathbf{X}^k_{t, i, p}.
+\end{equation}
+
+\noindent The predicted electabilities are party-, election-, and bloc specific. Also, note that I implicitly assume that candidates with the same rank in a given bloc have an equal probability of election in a certain election. For example, suppose one obtains a predicted probability of $0.6$ for a specific rank $k$ shared by six candidates. I presume these candidates win the election with an equal probability of $0.6$.
+
+I classify different ranks according to those predicted probabilities. I set three categories: "fair"($>$ 60 percent), "medium"($>$ 40 percent), and "tough".
+
+I regress the dependent variable on key independent variables, candidates' age, seniority, and dual nomination status. I estimate separate models for each set of the dependent (rank; electability index) and independent variables, resulting in six different models. I estimate negative binomial and ordered logit models for the two distinct operationalizations of the dependent variable. I proxy candidates' seniority with the number of previous wins in the lower house election. Covariates include candidates' gender \citep{chiru2017value, salmond2006proportional}, incumbency status, celebrity status, and block magnitudes. I also include party- and year-fixed effects to account for party-level and temporal factors correlating with candidates' list ranks \citep{fujimura2012position}.
+
+For the counterfactual analysis corresponding to Hypothesis 3, I analyze the nomination patterns of candidates who stood solely in the PR tier. This analysis thus presumes that parties nominate their best candidates in the PR tier. As strong and unrealistic as this assumption is, I argue that relaxing this assumption would not alter the conclusion about the impact of dual nomination on youth underrepresentation. Table \ref{table:firstElection} illustrates the mean age of novel MPs for each post-war general election, showing that newcomers are far younger than incumbents or those with previous legislative experience. The same pattern should apply to newly nominated candidates: even if parties had nominated additional candidates for the PR tier, their age would have been lower than the current candidates. 
+
+\input{../table/tabFirstElection.tex}
+
+\section{Implications and Contributions}
+
+This research contributes to the relevant literature in several important ways. First, the result points to an institutional origin of youth underrepresentation. While previous research has provided the possible institutional causes of the problem through cross-national comparisons, I present a specific mechanism that electoral institutions could cause the underrepresentation of young citizens by forming parties' candidate nomination strategies. Most parties are not simply aiming to maximize their vote shares; they are more or less aiming to implement some policies they support. Not every politician would do for this purpose; parties need politicians with more experience and resources. With these goals in mind, parties would give their senior members a second chance when allowed to do so. 
+
+Second, I show that mixed-member systems, without proper institutional arrangements, might not have the representational benefits inherent in PR systems. Japan introduced the current electoral system due to the 1994 electoral reform. While the reform transformed the central actor of the election in the country from candidates to parties \citep{catalinac_electoral_2016, shugart_causes_2003, shugart_consequences_2003}, it is not clear whether reformers at the time intended to promote the representation of politically marginalized groups, such as women and the youth. I, therefore, do not claim that youth underrepresentation is the symptom of malfunction; however, it can be seen as one of the consequences or side effects of the reform. 
+
+The result also has implications for environmental politics and policies. Descriptive representatives are said to substantively represent those who share their identities \citep{mcclean2021does}. Environmental policies have disproportionate distributional consequences for voters who belong to different generations and thus have different time orientations, a gap that may be found among politicians \citep{umeda_politics_2022}. Part of the policy differences in this field may be attributable to the age composition of parliaments and, ultimately, to institutional features that determine the age structure. 
+
+\newpage
+
+\bibliography{../Reference.bib}
+\bibliographystyle{apalike}
+
+\end{document}
+
