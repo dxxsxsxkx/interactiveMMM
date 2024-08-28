@@ -1,0 +1,40 @@
+
+\begin{table}[!bth]
+\begin{center}
+\begin{threeparttable}
+\begin{tabular}{l D{.}{.}{5.5} D{.}{.}{5.5} D{.}{.}{5.5} D{.}{.}{5.5} D{.}{.}{5.5}}
+\toprule
+ & \multicolumn{2}{c}{Dual Listing} & \multicolumn{3}{c}{List Rank} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-6}
+ & \multicolumn{1}{c}{H1} & \multicolumn{1}{c}{H2} & \multicolumn{1}{c}{H3} & \multicolumn{1}{c}{H4} & \multicolumn{1}{c}{H5} \\
+\midrule
+Total Wins      & 0.17^{***}              &                         & -0.14^{***}             &                         &                         \\
+                & (0.02)                  &                         & (0.01)                  &                         &                         \\
+Incumbency      &                         & 1.59^{***}              &                         & -1.22^{***}             &                         \\
+                &                         & (0.12)                  &                         & (0.04)                  &                         \\
+Dual Listing    &                         &                         &                         &                         & -1.96^{***}             \\
+                &                         &                         &                         &                         & (0.04)                  \\
+Female          & -0.58^{**}              & -0.56^{**}              & -0.01                   & -0.05                   & -0.09                   \\
+                & (0.19)                  & (0.19)                  & (0.08)                  & (0.08)                  & (0.06)                  \\
+Block Magnitude & 0.05^{***}              & 0.06^{***}              & 0.00                    & 0.00                    & 0.01^{***}              \\
+                & (0.01)                  & (0.01)                  & (0.00)                  & (0.00)                  & (0.00)                  \\
+\midrule
+Year FE         & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\
+Party FE        & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\
+AIC             & 2312.75                 & 2192.52                 & 14665.40                & 14239.73                & 12869.00                \\
+BIC             & 2377.20                 & 2256.97                 & 14735.71                & 14310.04                & 12939.31                \\
+Log Likelihood  & -1145.37                & -1085.26                & -7320.70                & -7107.87                & -6422.50                \\
+Deviance        & 2290.75                 & 2170.52                 & 2609.56                 & 2526.28                 & 2149.91                 \\
+Num. obs.       & 2589                    & 2589                    & 2589                    & 2589                    & 2589                    \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}[flushleft]
+\scriptsize{\item $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. Standard errors in parentheses.
+\item Dependent variable: candidate $i$'s list rank (H1-2) and dual nomination status (H3-5).
+\item Estimated models: logit (H1-2) and negative binomial (H3-5).}
+\end{tablenotes}
+\end{threeparttable}
+\caption{Regression Results for LDP Candidates}
+\label{tab:regLDP}
+\end{center}
+\end{table}

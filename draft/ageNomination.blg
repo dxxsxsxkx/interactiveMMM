@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: ageNomination.aux
+The style file: apalike.bst
+Database file #1: ../Reference.bib
+Warning--entry type for "ipu2023" isn't style-file defined
+--line 492 of file ../Reference.bib
+Warning--entry type for "reedsmith2018" isn't style-file defined
+--line 862 of file ../Reference.bib
+Warning--entry type for "un2022" isn't style-file defined
+--line 1070 of file ../Reference.bib
+Repeated entry---line 1491 of file ../Reference.bib
+ : @article{cox_interaction_2002
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1512 of file ../Reference.bib
+ : @book{ferrara_mixed_2005
+ :                         ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1569 of file ../Reference.bib
+ : @book{reynolds_electoral_2005
+ :                              ,
+I'm skipping whatever remains of this entry
+Warning--empty note in hirano_policy
+You've used 34 entries,
+            1935 wiz_defined-function locations,
+            671 strings with 9690 characters,
+and the built_in function-call counts, 12279 in all, are:
+= -- 1238
+> -- 438
+< -- 29
++ -- 139
+- -- 137
+* -- 1021
+:= -- 2174
+add.period$ -- 106
+call.type$ -- 34
+change.case$ -- 231
+chr.to.int$ -- 34
+cite$ -- 35
+duplicate$ -- 472
+empty$ -- 875
+format.name$ -- 205
+if$ -- 2389
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 34
+newline$ -- 174
+num.names$ -- 104
+pop$ -- 175
+preamble$ -- 1
+purify$ -- 236
+quote$ -- 0
+skip$ -- 364
+stack$ -- 0
+substring$ -- 844
+swap$ -- 41
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 192
+warning$ -- 1
+while$ -- 109
+width$ -- 0
+write$ -- 444
+(There were 3 error messages)
