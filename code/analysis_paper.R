@@ -409,8 +409,8 @@ texreg(
   ), 
   custom.note = paste0(
     "\\item %stars. Standard errors in parentheses.\n", 
-    "\\item Dependent variable: candidate $i$'s list rank (H1-2) ", 
-    "and dual nomination status (H3-5).\n", 
+    "\\item Dependent variable: candidate $i$'s dual listing status (H1-2) ", 
+    "and list rank (H3-5).\n", 
     "\\item Estimated models: logit (H1-2) and negative binomial (H3-5)."
   ), 
   caption = "Regression Results",

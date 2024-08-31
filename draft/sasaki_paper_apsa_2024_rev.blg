@@ -1,6 +1,6 @@
 This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: ageNomination.aux
+The top-level auxiliary file: sasaki_paper_apsa_2024_rev.aux
 The style file: apalike.bst
 Database file #1: ../Reference.bib
 Warning--entry type for "ipu2023" isn't style-file defined
@@ -38,7 +38,7 @@ I'm skipping whatever remains of this entry
 Warning--empty note in hirano_policy
 You've used 38 entries,
             1935 wiz_defined-function locations,
-            698 strings with 10515 characters,
+            698 strings with 10541 characters,
 and the built_in function-call counts, 14154 in all, are:
 = -- 1421
 > -- 517

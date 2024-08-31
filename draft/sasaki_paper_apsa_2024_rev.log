@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  31 AUG 2024 12:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  31 AUG 2024 12:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**ageNomination.tex
-(./ageNomination.tex
+**sasaki_paper_apsa_2024_rev.tex
+(./sasaki_paper_apsa_2024_rev.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/base/article.cls
@@ -552,12 +552,12 @@ File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count312
 \l__pdf_internal_box=\box64
 )
-(./ageNomination.aux
+(./sasaki_paper_apsa_2024_rev.aux
 
 LaTeX Warning: Label `fig:dual' multiply defined.
 
 )
-\openout1 = `ageNomination.aux'.
+\openout1 = `sasaki_paper_apsa_2024_rev.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 71.
 LaTeX Font Info:    ... okay on input line 71.
@@ -637,9 +637,9 @@ Package caption Info: End \AtBeginDocument code.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring ON on input line 71.
-(./ageNomination.out) (./ageNomination.out)
+(./sasaki_paper_apsa_2024_rev.out) (./sasaki_paper_apsa_2024_rev.out)
 \@outlinefile=\write3
-\openout3 = `ageNomination.out'.
+\openout3 = `sasaki_paper_apsa_2024_rev.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 74.
 
@@ -710,8 +710,9 @@ File: ../figure/paper/age_first_run.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../figure/paper/age_first_run.pdf  used on input line 
 291.
 (pdftex.def)             Requested size: 407.66833pt x 305.74846pt.
- [21 <../figure/paper/age_first_run.pdf>] [22] [23] (./ageNomination.bbl
-[24] [25] [26]) [27] (../table/tab.summary.candidate.tex
+ [21 <../figure/paper/age_first_run.pdf>] [22] [23]
+(./sasaki_paper_apsa_2024_rev.bbl [24] [25] [26]) [27]
+(../table/tab.summary.candidate.tex
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <to be read again> 
@@ -767,9 +768,10 @@ pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
 l.37 ...Regression Results for Komeito Candidates}
                                                   )
 \tf@thm=\write4
-\openout4 = `ageNomination.thm'.
+\openout4 = `sasaki_paper_apsa_2024_rev.thm'.
 
- [33] (./ageNomination.aux)
+ [33]
+(./sasaki_paper_apsa_2024_rev.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -781,17 +783,18 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `ageNomination.out' has not changed.
+Package rerunfilecheck Info: File `sasaki_paper_apsa_2024_rev.out' has not chan
+ged.
 (rerunfilecheck)             Checksum: 844457A3EC1680111BAA6EF602C0C7B2;3819.
  ) 
 Here is how much of TeX's memory you used:
  13679 strings out of 474116
- 219252 string characters out of 5743682
+ 219564 string characters out of 5743682
  1965187 words of memory out of 5000000
  35669 multiletter control sequences out of 15000+600000
  571752 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,14n,79p,1709b,637s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,14n,79p,1722b,637s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
 , replaced by a fixed one
@@ -828,7 +831,7 @@ f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf
 ist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf-dis
 t/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-dist/
 fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on ageNomination.pdf (33 pages, 360870 bytes).
+Output written on sasaki_paper_apsa_2024_rev.pdf (33 pages, 361472 bytes).
 PDF statistics:
  620 PDF objects out of 1000 (max. 8388607)
  525 compressed objects within 6 object streams

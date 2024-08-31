@@ -156,8 +156,8 @@ texreg(
   ), 
   custom.note = paste0(
     "\\item %stars. Standard errors in parentheses.\n", 
-    "\\item Dependent variable: candidate $i$'s list rank (H1-2) ", 
-    "and dual nomination status (H3-5).\n", 
+    "\\item Dependent variable: candidate $i$'s dual listing status (H1-2) ", 
+    "and list rank (H3-5).\n",
     "\\item Estimated models: logit (H1-2) and negative binomial (H3-5)."
   ), 
   caption = "Regression Results for LDP Candidates",
@@ -165,7 +165,7 @@ texreg(
   dcolumn = TRUE, 
   threeparttable = TRUE, 
   use.packages = FALSE, 
-  float.pos = "!bth", 
+  float.pos = "!htbp", 
   label = "tab:regLDP",
   file = "./table/regression_results_ldp.tex"
 )
@@ -221,8 +221,8 @@ texreg(
   ), 
   custom.note = paste0(
     "\\item %stars. Standard errors in parentheses.\n", 
-    "\\item Dependent variable: candidate $i$'s list rank (H1-2) ", 
-    "and dual nomination status (H3-5).\n", 
+    "\\item Dependent variable: candidate $i$'s dual listing status (H1-2) ", 
+    "and list rank (H3-5).\n",
     "\\item Estimated models: logit (H1-2) and negative binomial (H3-5)."
   ), 
   caption = "Regression Results for DPJ / CDP Candidates",
@@ -230,7 +230,7 @@ texreg(
   dcolumn = TRUE, 
   threeparttable = TRUE, 
   use.packages = FALSE, 
-  float.pos = "!bth", 
+  float.pos = "!htbp", 
   label = "tab:regDPJCDP",
   file = "./table/regression_results_dpj_cdp.tex"
 )
@@ -286,8 +286,8 @@ texreg(
   ), 
   custom.note = paste0(
     "\\item %stars. Standard errors in parentheses.\n", 
-    "\\item Dependent variable: candidate $i$'s list rank (H1-2) ", 
-    "and dual nomination status (H3-5).\n", 
+    "\\item Dependent variable: candidate $i$'s dual listing status (H1-2) ", 
+    "and list rank (H3-5).\n", 
     "\\item Estimated models: logit (H1-2) and negative binomial (H3-5)."
   ), 
   caption = "Regression Results for Komeito Candidates",
@@ -295,7 +295,7 @@ texreg(
   dcolumn = TRUE, 
   threeparttable = TRUE, 
   use.packages = FALSE, 
-  float.pos = "!bth", 
+  float.pos = "!htbp", 
   label = "tab:regKomeito",
   file = "./table/regression_results_komeito.tex"
 )
@@ -351,8 +351,8 @@ texreg(
   ), 
   custom.note = paste0(
     "\\item %stars. Standard errors in parentheses.\n", 
-    "\\item Dependent variable: candidate $i$'s list rank (H1-2) ", 
-    "and dual nomination status (H3-5).\n", 
+    "\\item Dependent variable: candidate $i$'s dual listing status (H1-2) ", 
+    "and list rank (H3-5).\n",
     "\\item Estimated models: logit (H1-2) and negative binomial (H3-5)."
   ), 
   caption = "Regression Results for JCP Candidates",
@@ -360,7 +360,7 @@ texreg(
   dcolumn = TRUE, 
   threeparttable = TRUE, 
   use.packages = FALSE, 
-  float.pos = "!bth", 
+  float.pos = "!htbp", 
   label = "tab:regJCP",
   file = "./table/regression_results_jcp.tex"
 )
@@ -607,16 +607,16 @@ data.h4.ldp.2012 %>%
 # reg table for election-/party-specific analysis
 texreg(
   list(
-    fit.h3.ldp.2005, 
     fit.h4.ldp.2005, 
-    fit.h3.ldp.2012, 
-    fit.h4.ldp.2012
+    fit.h3.ldp.2005, 
+    fit.h4.ldp.2012, 
+    fit.h3.ldp.2012
   ),
   custom.header = list(
     "2005 LDP" = 1:2, 
     "2012 LDP" = 3:4
   ), 
-  custom.model.names = c("H3", "H4", "H3", "H4"),
+  custom.model.names = c("H1", "H3", "H1", "H3"),
   custom.coef.map = list(
     "totcwinsT" = "Total Wins", 
     "incBinary1" = "Incumbency", 
@@ -626,9 +626,253 @@ texreg(
   ), 
   custom.note = paste0(
     "\\item %stars. Standard errors in parentheses.\n", 
-    "\\item Dependent variable: candidate $i$'s list rank (H3) ", 
-    "and dual nomination status (H4).\n", 
-    "\\item Estimated models: negative binomial (H3) and logit (H4)."
+    "\\item Dependent variable: candidate $i$'s dual listing status (H1) ", 
+    "and list rank (H3).\n", 
+    "\\item Estimated models: logit (H1) and negative binomial (H3)."
+  ), 
+  caption = "Regression Results for LDP Candidates in 2005 and 2012",
+  booktabs = TRUE, 
+  dcolumn = TRUE, 
+  threeparttable = TRUE, 
+  use.packages = FALSE, 
+  float.pos = "!htbp", 
+  label = "tab:regLDP2005_2012",
+  file = "./table/regression_results_ldp_2005_2012.tex"
+)
+
+# analysis with rank safety index
+fit.h3.rsi.ldp <- multinom(
+  data = data.ldp, 
+  as.factor(pr_electability_lab) ~ 
+    totcwinsT + female + pr_m + legis
+)
+fit.h4.rsi.ldp <- multinom(
+  data = data.ldp, 
+  as.factor(pr_electability_lab) ~ 
+    incBinary + female + pr_m + legis
+)
+fit.h5.rsi.ldp <- multinom(
+  data = data.ldp, 
+  as.factor(pr_electability_lab) ~ 
+    is_dual + female + pr_m + legis
+)
+fit.h3.rsi.dpj.cdp <- multinom(
+  data = data.dpj.cdp, 
+  as.factor(pr_electability_lab) ~
+    totcwinsT + female + pr_m + legis
+)
+fit.h4.rsi.dpj.cdp <- multinom(
+  data = data.dpj.cdp, 
+  as.factor(pr_electability_lab) ~ 
+    incBinary + female + pr_m + legis
+)
+fit.h5.rsi.dpj.cdp <- multinom(
+  data = data.dpj.cdp, 
+  as.factor(pr_electability_lab) ~ 
+    is_dual + female + pr_m + legis
+)
+
+# ldp
+texreg.med.h3.ldp <- createTexreg(
+  coef.names = summary(fit.h3.rsi.ldp)$coefnames, 
+  coef = coef(fit.h3.rsi.ldp)[1, ], 
+  se = sqrt(diag(vcov(fit.h3.rsi.ldp)[1:11, 1:11])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h3.rsi.ldp)[1, ]) / sqrt(diag(vcov(fit.h3.rsi.ldp)[1:11, 1:11])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h3.rsi.ldp), 
+    logLik(fit.h3.rsi.ldp), 
+    length(fitted(fit.h3.rsi.ldp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.tough.h3.ldp <- createTexreg(
+  coef.names = summary(fit.h3.rsi.ldp)$coefnames, 
+  coef = coef(fit.h3.rsi.ldp)[2, ], 
+  se = sqrt(diag(vcov(fit.h3.rsi.ldp)[12:22, 12:22])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h3.rsi.ldp)[2, ]) / sqrt(diag(vcov(fit.h3.rsi.ldp)[12:22, 12:22])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h3.rsi.ldp), 
+    logLik(fit.h3.rsi.ldp), 
+    length(fitted(fit.h3.rsi.ldp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.med.h4.ldp <- createTexreg(
+  coef.names = summary(fit.h4.rsi.ldp)$coefnames, 
+  coef = coef(fit.h4.rsi.ldp)[1, ], 
+  se = sqrt(diag(vcov(fit.h4.rsi.ldp)[1:11, 1:11])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h4.rsi.ldp)[1, ]) / sqrt(diag(vcov(fit.h4.rsi.ldp)[1:11, 1:11])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h4.rsi.ldp), 
+    logLik(fit.h4.rsi.ldp), 
+    length(fitted(fit.h4.rsi.ldp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.tough.h4.ldp <- createTexreg(
+  coef.names = summary(fit.h4.rsi.ldp)$coefnames, 
+  coef = coef(fit.h4.rsi.ldp)[2, ], 
+  se = sqrt(diag(vcov(fit.h4.rsi.ldp)[12:22, 12:22])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h4.rsi.ldp)[2, ]) / sqrt(diag(vcov(fit.h4.rsi.ldp)[12:22, 12:22])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h4.rsi.ldp), 
+    logLik(fit.h4.rsi.ldp), 
+    length(fitted(fit.h4.rsi.ldp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.med.h5.ldp <- createTexreg(
+  coef.names = summary(fit.h5.rsi.ldp)$coefnames, 
+  coef = coef(fit.h5.rsi.ldp)[1, ], 
+  se = sqrt(diag(vcov(fit.h5.rsi.ldp)[1:11, 1:11])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h5.rsi.ldp)[1, ]) / sqrt(diag(vcov(fit.h5.rsi.ldp)[1:11, 1:11])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h5.rsi.ldp), 
+    logLik(fit.h5.rsi.ldp), 
+    length(fitted(fit.h5.rsi.ldp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.tough.h5.ldp <- createTexreg(
+  coef.names = summary(fit.h5.rsi.ldp)$coefnames, 
+  coef = coef(fit.h5.rsi.ldp)[2, ], 
+  se = sqrt(diag(vcov(fit.h5.rsi.ldp)[12:22, 12:22])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h5.rsi.ldp)[2, ]) / sqrt(diag(vcov(fit.h5.rsi.ldp)[12:22, 12:22])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h5.rsi.ldp), 
+    logLik(fit.h5.rsi.ldp), 
+    length(fitted(fit.h5.rsi.ldp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+
+# dpj + cdp
+texreg.med.h3.dpj.cdp <- createTexreg(
+  coef.names = summary(fit.h3.rsi.dpj.cdp)$coefnames, 
+  coef = coef(fit.h3.rsi.dpj.cdp)[1, ], 
+  se = sqrt(diag(vcov(fit.h3.rsi.dpj.cdp)[1:11, 1:11])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h3.rsi.dpj.cdp)[1, ]) / sqrt(diag(vcov(fit.h3.rsi.dpj.cdp)[1:11, 1:11])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h3.rsi.dpj.cdp), 
+    logLik(fit.h3.rsi.dpj.cdp), 
+    length(fitted(fit.h3.rsi.dpj.cdp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.tough.h3.dpj.cdp <- createTexreg(
+  coef.names = summary(fit.h3.rsi.dpj.cdp)$coefnames, 
+  coef = coef(fit.h3.rsi.dpj.cdp)[2, ], 
+  se = sqrt(diag(vcov(fit.h3.rsi.dpj.cdp)[12:22, 12:22])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h3.rsi.dpj.cdp)[2, ]) / sqrt(diag(vcov(fit.h3.rsi.dpj.cdp)[12:22, 12:22])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h3.rsi.dpj.cdp), 
+    logLik(fit.h3.rsi.dpj.cdp), 
+    length(fitted(fit.h3.rsi.dpj.cdp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.med.h4.dpj.cdp <- createTexreg(
+  coef.names = summary(fit.h4.rsi.dpj.cdp)$coefnames, 
+  coef = coef(fit.h4.rsi.dpj.cdp)[1, ], 
+  se = sqrt(diag(vcov(fit.h4.rsi.dpj.cdp)[1:11, 1:11])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h4.rsi.dpj.cdp)[1, ]) / sqrt(diag(vcov(fit.h4.rsi.dpj.cdp)[1:11, 1:11])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h4.rsi.dpj.cdp), 
+    logLik(fit.h4.rsi.dpj.cdp), 
+    length(fitted(fit.h4.rsi.dpj.cdp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.tough.h4.dpj.cdp <- createTexreg(
+  coef.names = summary(fit.h4.rsi.dpj.cdp)$coefnames, 
+  coef = coef(fit.h4.rsi.dpj.cdp)[2, ], 
+  se = sqrt(diag(vcov(fit.h4.rsi.dpj.cdp)[12:22, 12:22])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h4.rsi.dpj.cdp)[2, ]) / sqrt(diag(vcov(fit.h4.rsi.dpj.cdp)[12:22, 12:22])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h4.rsi.dpj.cdp), 
+    logLik(fit.h4.rsi.dpj.cdp), 
+    length(fitted(fit.h4.rsi.dpj.cdp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.med.h5.dpj.cdp <- createTexreg(
+  coef.names = summary(fit.h5.rsi.dpj.cdp)$coefnames, 
+  coef = coef(fit.h5.rsi.dpj.cdp)[1, ], 
+  se = sqrt(diag(vcov(fit.h5.rsi.dpj.cdp)[1:11, 1:11])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h5.rsi.dpj.cdp)[1, ]) / sqrt(diag(vcov(fit.h5.rsi.dpj.cdp)[1:11, 1:11])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h5.rsi.dpj.cdp), 
+    logLik(fit.h5.rsi.dpj.cdp), 
+    length(fitted(fit.h5.rsi.dpj.cdp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+texreg.tough.h5.dpj.cdp <- createTexreg(
+  coef.names = summary(fit.h5.rsi.dpj.cdp)$coefnames, 
+  coef = coef(fit.h5.rsi.dpj.cdp)[2, ], 
+  se = sqrt(diag(vcov(fit.h5.rsi.dpj.cdp)[12:22, 12:22])), 
+  # manually calculate p-values
+  pvalues = 2 * (1 - pnorm(abs(coef(fit.h5.rsi.dpj.cdp)[2, ]) / sqrt(diag(vcov(fit.h5.rsi.dpj.cdp)[12:22, 12:22])))),
+  gof.names = c("AIC", "Log Likelihood", "Num. obs."), 
+  gof = c(
+    AIC(fit.h5.rsi.dpj.cdp), 
+    logLik(fit.h5.rsi.dpj.cdp), 
+    length(fitted(fit.h5.rsi.dpj.cdp)[, 1])
+  ),
+  gof.decimal = c(TRUE, TRUE, FALSE)
+)
+
+screenreg(
+  list(
+    texreg.med.h3.ldp, 
+    texreg.tough.h3.ldp, 
+    texreg.med.h4.ldp, 
+    texreg.tough.h4.ldp, 
+    texreg.med.h5.ldp, 
+    texreg.tough.h5.ldp
+  ),
+  custom.header = list(
+    "H3" = 1:2,
+    "H4" = 3:4,
+    "H5" = 5:6
+  ), 
+  custom.model.names = c(
+    "Fair | Medium", "Meduim | Tough", 
+    "Fair | Medium", "Medium | Tough", 
+    "Fair | Medium", "Medium | Tough"
+  ), 
+  custom.coef.map = list(
+    "totcwinsT" = "Total Wins", 
+    "incBinary1" = "Incumbency", 
+    "is_dual1" = "Dual Listing", 
+    "female"  = "Female", 
+    "pr_m" = "Block Magnitude"
+  ), 
+  custom.note = paste0(
+    "\\item %stars. Standard errors in parentheses.\n", 
+    "\\item Dependent variable: candidate $i$'s rank electability index."
   ), 
   caption = "Regression Results for LDP Candidates in 2005 and 2012",
   booktabs = TRUE, 
@@ -636,10 +880,14 @@ texreg(
   threeparttable = TRUE, 
   use.packages = FALSE, 
   float.pos = "!bth", 
-  label = "tab:regLDP2005_2012",
-  file = "./table/regression_results_ldp_2005_2012.tex"
+  label = "tab:regRsiLDP"#,
+  #file = "./table/regression_results_ldp_2005_2012.tex"
 )
 
-# analysis with rank safety index
+
+
+
+
+
 
 
