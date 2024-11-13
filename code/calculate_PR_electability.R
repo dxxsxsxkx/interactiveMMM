@@ -15,9 +15,9 @@ CalculatePastPRSeats <- function(data){
   data$pr_partyseatsBefore <- NA
   for (legis in unique(data$legis)){
     for (region in unique(data$region)) {
-      for (party in unique(data$party_jp)) {
-        conditionNow <- (data$legis == legis & data$region == region & data$party_jp == party)
-        conditionBefore <- (data$legis == legis - 1 & data$region == region & data$party_jp == party)
+      for (party in unique(data$party_en)) {
+        conditionNow <- (data$legis == legis & data$region == region & data$party_en == party)
+        conditionBefore <- (data$legis == legis - 1 & data$region == region & data$party_en == party)
         if(any(conditionBefore)){
           data$pr_partyseatsBefore[conditionNow] <- unique(data$pr_partyseats[conditionBefore])
         }else{
@@ -35,7 +35,7 @@ CategorizeRanks <- function(data){
   # calculate the proportion of elected candidates
   data.ranks <- aggregate(
     data = data, 
-    resultPR ~ legis + region + party_jp + pr_partyseatsBefore + pr_ncand + pr_m + pr_rank, 
+    resultPR ~ legis + region + party_en + pr_partyseatsBefore + pr_ncand + pr_m + pr_rank, 
     FUN = mean
   ) 
   

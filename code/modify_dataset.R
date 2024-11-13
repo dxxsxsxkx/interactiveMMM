@@ -23,8 +23,6 @@ FilterData <- function(data){
 AddVariables <- function(data){
   data.w.variables <- data %>% 
     mutate(
-      # create a dummy representing dually-nominated candidates
-      is_dual = ifelse(!is.na(ken), 1, 0),
       pr_rank.fct = as.factor(pr_rank),
       # create a coarsened pr_rank variable
       pr_rank.crs = ifelse(pr_rank > 12, 13, pr_rank), 
@@ -34,11 +32,11 @@ AddVariables <- function(data){
     )
   
   data.w.variables$party_onemanlist <- ifelse(
-    data$party_jp %in% 
-      unique(data$party_jp[data$pr_ncand == 1]), 
+    data$party_en %in% 
+      unique(data$party_en[data$pr_ncand == 1]), 
     1, 0
   )
-  data.w.variables$is_LDP <- ifelse(data$party_id == 1, 1, 0)
+  data.w.variables$is_LDP <- ifelse(data$party_en == "LDP", 1, 0)
   
   return(data.w.variables)
 }

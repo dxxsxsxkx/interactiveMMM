@@ -367,15 +367,15 @@ ggsave("./figure/dual_nomination.pdf", width = 8, height = 6)
 # H1 - H3
 fit.h1 <- glm.nb(
   data = data.pr, 
-  (pr_rank - 1) ~ is_dual + female + pr_m + legis + party_en
+  pr_rank ~ is_dual + female + pr_m + legis + party_en
 )
 fit.h2 <- glm.nb(
   data = data.pr, 
-  (pr_rank - 1) ~ incBinary + female + pr_m + legis + party_en
+  pr_rank ~ incBinary + female + pr_m + legis + party_en
 )
 fit.h3 <- glm.nb(
   data = data.pr, 
-  (pr_rank - 1) ~ totcwinsT + female + pr_m + legis + party_en
+  pr_rank ~ totcwinsT + female + pr_m + legis + party_en
 )
 
 # incumbency and dual nomination status
@@ -417,7 +417,7 @@ data.h1 <- data.frame(
       upr = exp(fit + 1.96 * se.fit)
     }
   )
-data.h1 %>%
+plot.h1 <- data.h1 %>%
   ggplot(aes(
     x = is_dual, 
     y = rank, 
@@ -436,7 +436,7 @@ data.h1 %>%
   geom_line() +
   labs(
     title = NULL, 
-    x = "Dual Nomination",
+    x = "Dual Listing",
     y = "Predicted Rank"
   ) +
   scale_x_discrete(
@@ -478,7 +478,7 @@ data.h2 <- data.frame(
       upr = exp(fit + 1.96 * se.fit)
     }
   )
-data.h2 %>%
+plot.h2 <- data.h2 %>%
   ggplot(aes(
     x = incBinary, 
     y = rank
@@ -497,7 +497,7 @@ data.h2 %>%
   labs(
     title = NULL,
     x = "Incumbency",
-    y = "Predicted Rank"
+    y = NULL
   ) +
   scale_x_discrete(
     labels = c("No", "Yes")
@@ -513,6 +513,7 @@ data.h2 %>%
     )
   )
 ggsave("./figure/h2_incumbency.pdf", width = 8, height = 6)
+
 
 # H3
 data.h3 <- data.frame(
@@ -542,7 +543,7 @@ data.h3 <- data.frame(
       upr = exp(fit + 1.96 * se.fit)
     }
   )
-data.h3 %>%
+plot.h3 <- data.h3 %>%
   ggplot(aes(
     x = totcwinsT, 
     y = rank
@@ -560,7 +561,7 @@ data.h3 %>%
   labs(
     title = NULL,
     x = "Total Wins",
-    y = "Predicted Rank"
+    y = NULL
   ) +
   theme_minimal() + 
   theme(
@@ -573,6 +574,16 @@ data.h3 %>%
     )
   )
 ggsave("./figure/h3_total_wins.pdf", width = 8, height = 6)
+
+cowplot::plot_grid(
+  plotlist = list(
+    plot.h3, 
+    plot.h2, 
+    plot.h1
+  ), 
+  nrow = 1
+)
+ggsave("./figure/slide/h3_h4_h5.pdf", width = 8, height = 6)
 
 # H4
 data.h4 <- data.frame(
@@ -598,7 +609,7 @@ data.h4 <- data.frame(
       upr = fit + 1.96 * se.fit
     }
   )
-data.h4 %>%
+plot.h4 <- data.h4 %>%
   ggplot(aes(
     x = incBinary, 
     y = is_dual
@@ -617,7 +628,7 @@ data.h4 %>%
   labs(
     title = NULL,
     x = "Incumbency",
-    y = "Dual Nomination"
+    y = "Dual Listing"
   ) +
   scale_x_discrete(
     labels = c("No", "Yes")
@@ -661,7 +672,7 @@ data.h5 <- data.frame(
       upr = fit + 1.96 * se.fit
     }
   )
-data.h5 %>%
+plot.h5 <- data.h5 %>%
   ggplot(aes(
     x = totcwinsT, 
     y = is_dual
@@ -679,7 +690,7 @@ data.h5 %>%
   labs(
     title = NULL,
     x = "Total Wins",
-    y = "Dual Nomination"
+    y = NULL
   ) +
   theme_minimal() + 
   theme(
@@ -692,6 +703,15 @@ data.h5 %>%
     )
   )
 ggsave("./figure/h5_total_wins.pdf", width = 8, height = 6)
+
+cowplot::plot_grid(
+  plotlist = list(
+    plot.h5, 
+    plot.h4
+  ), 
+  nrow = 1
+)
+ggsave("./figure/slide/h1_h2.pdf", width = 8, height = 6)
 
 # Discussion
 data.first.run <- data %>% 

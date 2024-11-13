@@ -366,6 +366,16 @@ fit.h3 <- glm.nb(
   pr_rank ~ totcwinsT + female + pr_m + legis + party_en
 )
 
+# controling for dual listing status
+test.fit.h2 <- glm.nb(
+  data = data.pr, 
+  pr_rank ~ incBinary + is_dual + female + pr_m + legis + party_en
+)
+test.fit.h3 <- glm.nb(
+  data = data.pr, 
+  pr_rank ~ totcwinsT + is_dual + female + pr_m + legis + party_en
+)
+
 # incumbency and dual nomination status
 fit.h4 <- glm(
   data = data.pr, 
