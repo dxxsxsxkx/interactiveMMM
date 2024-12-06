@@ -58,8 +58,8 @@ data.pr <- data |>  # PR (including dual-listed candidates)
   CategorizeRanks() |>   
   dplyr::select(
     name_jp, legis, year, 
-    party_en, prcode, pr_m, pr_rank, 
-    totcwinsT, is_dual, incBinary, female, age
+    party_en, prcode, pr_m, pr_rank, result, 
+    totcruns, totcwinsT, is_dual, incBinary, female, age
   ) |> 
   group_by(legis, party_en, prcode, pr_rank) |> 
   mutate(
@@ -68,6 +68,176 @@ data.pr <- data |>  # PR (including dual-listed candidates)
     is_tie = (n() > 1)
   ) |> 
   ungroup()
+
+# Summary statistics
+# A1
+# total
+data.pr |> 
+  summarize(
+    n = n(), 
+    n_inc = sum(incBinary == 1) / n, 
+    n_dual = sum(is_dual == 1) / n, 
+    n_tie = sum(is_dual == 1 & is_tie == 1) / n,
+    n_female = sum(female == 1) / n, 
+    mean_n_win = mean(totcwinsT, na.rm = TRUE),
+    sd_n_win = sd(totcwinsT, na.rm = TRUE), 
+    med_n_win = median(totcwinsT, na.rm = TRUE)
+  )
+# by election year
+data.pr |> 
+  group_by(year) |> 
+  summarize(
+    n = n(), 
+    n_inc = sum(incBinary == 1) / n, 
+    n_dual = sum(is_dual == 1) / n, 
+    n_tie = sum(is_dual == 1 & is_tie == 1) / n, 
+    n_female = sum(female == 1) / n, 
+    mean_n_win = mean(totcwinsT, na.rm = TRUE),
+    sd_n_win = sd(totcwinsT, na.rm = TRUE), 
+    med_n_win = median(totcwinsT, na.rm = TRUE)
+  )
+
+# A2: PR block magnitudes
+data.pr |> 
+  group_by(year, prcode) |> 
+  # pr_m is the same for all candidates in the same PR block
+  summarize(
+    n = n(), 
+    pr_m = first(pr_m)
+  ) |> 
+  filter(
+    year == 2021  # modify this to see other years
+  )
+
+# A3: Distribution of list rank
+data.pr |> 
+  # calculate proportion for each rank
+  group_by(pr_rank) |>
+  summarize(
+    n = n(), 
+  ) |>
+  mutate(
+    prop = n / sum(n)
+  ) |> 
+  ggplot(
+    aes(
+      x = pr_rank, 
+      y = prop
+    )
+  ) +
+  geom_histogram(
+    stat = "identity",
+    bins = 30, 
+    color = "white"
+  ) +
+  labs(
+    title = NULL,
+    x = "List Rank",
+    y = "Frequency"
+  ) +
+  theme_minimal(
+    base_size = 16
+  )
+ggsave(
+  "./figure/paper/pr_rank_distribution.pdf", 
+  width = 8, 
+  height = 6
+)
+
+# Frequency of dual listing
+data.dual.total <- data.pr %>% 
+  filter(
+    result %in% c(2, 3)
+  ) %>% 
+  group_by(year) %>% 
+  summarize(
+    n = n(), 
+    n_dual = sum(as.numeric(is_dual)[result == 2] - 1)
+  ) %>%
+  mutate(
+    party_en = "Total",
+    year = year,
+    prop_dual = n_dual / n
+  ) %>% 
+  ungroup()
+data.dual.party <- data.pr %>% 
+  filter(
+    result %in% c(2, 3)
+  ) %>% 
+  group_by(year, party_en) %>% 
+  summarize(
+    n = n(), 
+    n_dual = sum(as.numeric(is_dual)[result == 2] - 1)
+  ) %>%
+  mutate(
+    year = year,
+    prop_dual = n_dual / n
+  ) %>% 
+  ungroup() %>% 
+  # change party names 
+  # DPJ + CDP = DPJ, 1996 - 2014 and CDP, 2017
+  mutate(
+    party_en = as.character(party_en) %>% 
+      ifelse(
+        . %in% c("DPJ", "CDP"), 
+        "DPJ + CDP",
+        .
+      )
+  )
+
+data.dual <- data.dual.total %>%
+  bind_rows(data.dual.party) %>% 
+  filter(
+    party_en %in% c(
+      "Total", 
+      "LDP", 
+      "Komeito", 
+      "DPJ + CDP", 
+      "JCP"
+    )
+  )
+
+# Figure 1
+data.dual %>% 
+  ggplot() +
+  geom_line(
+    aes(
+      x = year, 
+      y = prop_dual, 
+      color = party_en
+    ), 
+    linewidth = 1
+  ) +
+  labs(
+    title = NULL,
+    x = NULL,
+    y = "Proportion"
+  ) +
+  scale_color_discrete(
+    name = NULL
+  ) + 
+  guides(
+    color = guide_legend(
+      title = "Party", 
+      reverse = TRUE
+    ), 
+    alpha = "none"
+  ) + 
+  theme_minimal() +
+  theme(
+    text = element_text(size = 16), 
+    axis.title.x = element_text(
+      margin = margin(0, 0, 0, 0)
+    ),
+    axis.title.y = element_text(
+      margin = margin(0, 10, 0, 0)
+    ), 
+    # legend
+    legend.title = element_blank(), 
+    legend.position = "bottom"
+  )
+ggsave("./figure/paper/dual_nomination.pdf", width = 8, height = 6)
+
 
 # election - / party-specific dataframes
 data.ldp.2005 <- data.pr %>% 
@@ -248,6 +418,7 @@ texreg.tie <- createTexreg(
   gof.decimal = c(TRUE, TRUE, FALSE)
 )
 
+# B1
 # regression tables
 texreg(
   list(
@@ -289,11 +460,18 @@ texreg(
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
   caption = "Regression Results", 
+  booktabs = TRUE, 
+  dcolumn = TRUE, 
+  threeparttable = TRUE, 
+  use.packages = FALSE, 
+  float.pos = "!htbp",
+  scalebox = 0.6,
   file = "./table/regression_results.tex", 
   label = "tab:regression_results"
 )
 
-# marginal effects plot
+# Marginal effects plot
+# Figure 2
 # List rank
 marginal_effects_rank <- slopes(
   fit.rank, 
@@ -339,7 +517,7 @@ marginal_effects_rank |>
     alpha = 0.2
   ) +
   scale_color_manual(
-    name = "Incumbency, Dual Listing, and Tie Status", 
+    name = NULL, 
     breaks = c(
       "0, 0, FALSE", 
       "0, 1, FALSE", 
@@ -359,7 +537,7 @@ marginal_effects_rank |>
     values = c("#F8766D", "#00BFC4", "#7CAE00", "#F8766D", "#00BFC4", "#7CAE00")
   ) +
   scale_linetype_manual(
-    name = "Incumbency, Dual Listing, and Tie Status", 
+    name = NULL, 
     breaks = c(
       "0, 0, FALSE", 
       "0, 1, FALSE", 
@@ -384,7 +562,10 @@ marginal_effects_rank |>
     y = "Predicted List Rank"
   ) +
   theme_minimal() + 
-  theme(legend.position = "right")
+  theme(
+    legend.position = "bottom", 
+    text = element_text(size = 12)
+  )
 ggsave(
   "./figure/paper/marginal_effects_rank.pdf", 
   width = 8, 
@@ -409,7 +590,7 @@ marginal_effects_dual <- slopes(
   vcov = ~ party_en
 )
 # Plot marginal effects
-marginal_effects_dual |> 
+plot.dual <- marginal_effects_dual |> 
   filter(
     term == "totcwinsT"
   ) |>
@@ -440,12 +621,9 @@ marginal_effects_dual |>
     y = "Predicted Probability of Dual Listing"
   ) +
   theme_minimal() + 
-  theme(legend.position = "right")
-ggsave(
-  "./figure/paper/marginal_effects_dual.pdf", 
-  width = 8, 
-  height = 6
-)
+  theme(
+    legend.position = "bottom"
+  )
 
 marginal_effects_tie <- slopes(
   fit.tie, 
@@ -464,7 +642,7 @@ marginal_effects_tie <- slopes(
   vcov = ~ party_en
 )
 # Plot marginal effects
-marginal_effects_tie |> 
+plot.tie <- marginal_effects_tie |> 
   filter(
     term == "totcwinsT"
   ) |>
@@ -495,11 +673,18 @@ marginal_effects_tie |>
     y = "Predicted Probability of Tie"
   ) +
   theme_minimal() + 
-  theme(legend.position = "right")
+  theme(legend.position = "bottom")
+
+# Figure 3
+plot_grid(
+  plot.dual, 
+  plot.tie, 
+  ncol = 1
+)
 ggsave(
-  "./figure/paper/marginal_effects_tie.pdf", 
-  width = 8, 
-  height = 6
+  "./figure/paper/marginal_effects_dual_tie.pdf", 
+  width = 6, 
+  height = 8
 )
 
 # Party- and election-specific analysis
@@ -741,7 +926,7 @@ fit.dual.ldp.2012 <- glm(
 )
 
 # Regression tables
-# LDP
+# Table 2: LDP
 texreg(
   list(
     fit.rank.seniority.ldp, 
@@ -782,11 +967,17 @@ texreg(
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
   caption = "Regression Results for LDP Candidates", 
+  booktabs = TRUE, 
+  dcolumn = TRUE, 
+  threeparttable = TRUE, 
+  use.packages = FALSE, 
+  float.pos = "!htbp",
+  scalebox = 0.6, 
   file = "./table/regression_results_ldp.tex", 
   label = "tab:ldp"
 )
 
-# DPJ + CDP
+# Table 3: DPJ + CDP
 texreg(
   list(
     fit.rank.seniority.dpj.cdp, 
@@ -827,11 +1018,17 @@ texreg(
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
   caption = "Regression Results for DPJ / CDP Candidates", 
+  booktabs = TRUE, 
+  dcolumn = TRUE, 
+  threeparttable = TRUE, 
+  use.packages = FALSE, 
+  float.pos = "!htbp",
+  scalebox = 0.6, 
   file = "./table/regression_results_dpj_cdp.tex", 
   label = "tab:dpj_cdp"
 )
 
-# Komeito
+# B2: Komeito
 texreg(
   list(
     fit.rank.seniority.komeito, 
@@ -872,11 +1069,17 @@ texreg(
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
   caption = "Regression Results for Komeito Candidates", 
+  booktabs = TRUE, 
+  dcolumn = TRUE, 
+  threeparttable = TRUE, 
+  use.packages = FALSE, 
+  scalebox = 0.7, 
+  float.pos = "!htbp",
   file = "./table/regression_results_komeito.tex",
   label = "tab:komeito"
 )
 
-# JCP
+# B3: JCP
 texreg(
   list(
     fit.rank.seniority.jcp, 
@@ -917,11 +1120,17 @@ texreg(
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
   caption = "Regression Results for JCP Candidates", 
+  booktabs = TRUE, 
+  dcolumn = TRUE, 
+  threeparttable = TRUE, 
+  use.packages = FALSE, 
+  float.pos = "!htbp",
+  scalebox = 0.7,
   file = "./table/regression_results_jcp.tex",
   label = "tab:jcp"
 )
 
-# 2005 and 2012 LDP
+# Table 4: 2005 and 2012 LDP
 texreg(
   list(
     fit.rank.ldp.2005, 
@@ -958,18 +1167,379 @@ texreg(
   ), 
   custom.note = paste0(
     "\\item %stars. Standard errors in parentheses.\n", 
-    "\\item Dependent variable: candidate $i$'s list rank (columns 1 / 3) ", 
-    "dual listing status (columns 2 / 4), and whether the candidate has a tie on the list (columns 3 / 6).\n", 
-    "\\item Estimated models: negatige binomial (columns 1 / 4) and logit (columns 2-3, 5-6). \n", 
+    "\\item Dependent variable: candidate $i$'s list rank (columns 1 / 4), ", 
+    "dual listing status (columns 2 / 5), and whether the candidate has a tie on the list (column 3).\n", 
+    "\\item Estimated models: negatige binomial (columns 1 / 4) and logit (columns 2, 3, and 5). \n", 
     "\\textit{Note.} All dual-listed LDP candidates in the 2012 general election had ties on the list."
   ), 
   caption = "Regression Results for LDP Candidates in 2005 and 2012",
+  booktabs = TRUE, 
+  dcolumn = TRUE, 
+  threeparttable = TRUE, 
+  use.packages = FALSE, 
+  float.pos = "!htbp",
+  scalebox = NULL, 
   file = "./table/regression_results_ldp_2005_2012.tex",
   label = "tab:ldp_2005_2012"
 )
 
+# Age of winners
+data.winner <- data %>% 
+  filter(
+    result %in% c(1, 2, 3)
+  ) %>% 
+  mutate(
+    win_in = ifelse(
+      result == 1, 
+      "Majoritarian", 
+      "PR"
+    )
+  )
+
+# Figure 4: Age composition of legislators elected from each tier
+data.winner %>% 
+  filter(
+    # only post-reform winners
+    year >= 1994
+  ) |> 
+  group_by(win_in) %>%
+  # summarize by five years in age
+  mutate(
+    age = cut(
+      age, 
+      breaks = seq(20, 100, 5)
+    )
+  ) %>%
+  count(age) %>%
+  mutate(
+    prop = n / sum(n)
+  ) %>%
+  ggplot(
+    aes(
+      x = age, 
+      y = prop,
+      fill = win_in
+    )
+  ) +
+  geom_histogram(
+    stat = "identity",
+    position = "dodge", 
+    alpha = 0.7,
+    binwidth = 5
+  ) +
+  labs(
+    title = NULL,
+    x = "Age",
+    y = NULL
+  ) +
+  scale_x_discrete(
+    labels = c(
+      "20-25", 
+      "25-30", 
+      "30-35", 
+      "35-40", 
+      "40-45", 
+      "45-50", 
+      "50-55", 
+      "55-60", 
+      "60-65", 
+      "65-70", 
+      "70-75", 
+      "75-80", 
+      "80-85", 
+      "85-90"
+    )
+  ) + 
+  theme_minimal() +
+  theme(
+    legend.position = "inside", 
+    legend.position.inside = c(0.9, 0.8), 
+    legend.title = element_blank(),
+    legend.background = element_rect(
+      fill = "white", 
+      color = "black"
+    ),
+    text = element_text(size = 15), 
+    axis.text.x = element_text(
+      angle = 45, 
+      hjust = 1
+    ), 
+    axis.title.x = element_text(
+      margin = margin(10, 0, 0, 0)
+    )
+  )
+ggsave("./figure/paper/age_smd_vs_pr_winners.pdf", width = 8, height = 6)
+
+# Figure 4: Age comparison, average vs. new candidates
+age.first.run <- data %>% 
+  filter(
+    totcruns == 1, 
+    year >= 1994, 
+    byelection != 1
+  ) %>% 
+  group_by(year) %>% 
+  summarize(
+    first_run = mean(age)
+  )
+age.all <- data %>% 
+  filter(
+    year >= 1994, 
+    byelection != 1
+  ) %>% 
+  group_by(year) %>%
+  summarize(
+    all = mean(age)
+  )
+age.pr.first.run <- data.pr %>% 
+  filter(
+    totcruns == 1, 
+    year >= 1994
+  ) %>%
+  group_by(year) %>%
+  summarize(
+    first_run_pr = mean(age)
+  )
+age.pr.all <- data.pr %>% 
+  filter(
+    year >= 1994, 
+  ) %>% 
+  group_by(year) %>% 
+  summarize(
+    all_pr = mean(age)
+  )
+
+# 2*2: first-time candidates vs. all candidates, SMD + PR vs. PR only
+age.first.run %>%
+  left_join(age.all, by = "year") %>%
+  left_join(age.pr.first.run, by = "year") %>%
+  left_join(age.pr.all, by = "year") %>%
+  pivot_longer(
+    cols = c(-year), 
+    names_to = "variable", 
+    values_to = "age"
+  ) %>%
+  ggplot() +
+  geom_line(
+    aes(
+      x = year, 
+      y = age, 
+      color = variable, 
+      linetype = variable
+    )
+  ) +
+  scale_color_manual(
+    name = NULL,
+    values = c(
+      all = "red", 
+      first_run = "red", 
+      all_pr = "blue", 
+      first_run_pr = "blue"
+    ), 
+    labels = c(
+      all = "SMD + PR", 
+      first_run = "First Run, SMD + PR", 
+      all_pr = "PR", 
+      first_run_pr = "First Run, PR"
+    )
+  ) + 
+  scale_linetype_manual(
+    name = NULL,
+    values = c(
+      all = "solid", 
+      first_run = "dashed", 
+      all_pr = "solid", 
+      first_run_pr = "dashed"
+    ), 
+    labels = c(
+      all = "SMD + PR", 
+      first_run = "First Run, SMD + PR", 
+      all_pr = "PR", 
+      first_run_pr = "First Run, PR"
+    )
+  ) +
+  labs(
+    title = NULL,
+    x = NULL,
+    y = "Mean Age"
+  ) + 
+  theme_minimal() +
+  theme(
+    text = element_text(size = 20), 
+    legend.text = element_text(size = 13),
+    axis.title.x = element_text(
+      margin = margin(0, 0, 0, 0)
+    ),
+    axis.title.y = element_text(
+      margin = margin(0, 10, 0, 0)
+    ), 
+    legend.position = "bottom"
+  )
+ggsave("./figure/paper/age_first_run.pdf", width = 8, height = 6)  
 
 
+# Data of winners
+age.first.win <- data.winner %>% 
+  filter(
+    # only post-reform winners
+    year >= 1994, 
+    byelection != 1, 
+    totcwinsT == 0
+  ) %>% 
+  group_by(year) %>%
+  summarize(
+    first_win = mean(age)
+  )
+age.all.win <- data.winner %>%
+  filter(
+    # only post-reform winners
+    year >= 1994, 
+    byelection != 1
+  ) %>% 
+  group_by(year) %>% 
+  summarize(
+    all_win = mean(age)
+  )
+age.pr.first.win <- data.winner %>%
+  filter(
+    # only post-reform winners
+    year >= 1994, 
+    byelection != 1, 
+    totcwinsT == 0, 
+    result %in% c(2, 3)
+  ) %>%
+  group_by(year) %>%
+  summarize(
+    first_win_pr = mean(age)
+  )
+age.pr.all.win <- data.winner %>%
+  filter(
+    # only post-reform winners
+    year >= 1994, 
+    byelection != 1, 
+    result %in% c(2, 3)
+  ) %>% 
+  group_by(year) %>% 
+  summarize(
+    all_win_pr = mean(age)
+  )
+
+# Table 6: data of first-time winners
+# mean age of first-time winners
+data.winner %>% 
+  filter(
+    # only post-reform winners
+    byelection != 1, 
+    totcwinsT == 0
+  ) %>% 
+  group_by(year) %>%
+  summarize(
+    first_win = mean(age)
+  ) |> 
+  group_by(year) |> 
+  summarize(
+    mean(first_win)
+  )
+
+# proportion of first-time winners
+data.winner |> 
+  filter(
+    byelection != 1
+  ) |> 
+  group_by(year) |> 
+  # count the number of first-time winners (totcwinsT = 0)
+  summarize(
+    n_first_win = sum(totcwinsT == 0), 
+    n_all_win = n()
+  ) |>
+  mutate(
+    prop_first_win = n_first_win / n_all_win
+  ) |> 
+  print(n = 27)
+
+# Mean age of all winners
+data.winner %>% 
+  filter(
+    # only post-reform winners
+    byelection != 1
+  ) %>% 
+  group_by(year) %>%
+  summarize(
+    first_win = mean(age)
+  ) |> 
+  group_by(year) |> 
+  summarize(
+    mean(first_win)
+  ) |>  
+  print(n = 27)
+
+# A4: Age comparison, average vs. new winners
+# 2*2: first-time winners vs. all winners, SMD + PR vs. PR only
+age.first.win %>%
+  left_join(age.all.win, by = "year") %>%
+  left_join(age.pr.first.win, by = "year") %>%
+  left_join(age.pr.all.win, by = "year") %>%
+  pivot_longer(
+    cols = c(-year), 
+    names_to = "variable", 
+    values_to = "age"
+  ) %>%
+  ggplot() +
+  geom_line(
+    aes(
+      x = year, 
+      y = age, 
+      color = variable, 
+      linetype = variable
+    )
+  ) +
+  scale_color_manual(
+    name = NULL,
+    values = c(
+      all_win = "red", 
+      first_win = "red", 
+      all_win_pr = "blue", 
+      first_win_pr = "blue"
+    ), 
+    labels = c(
+      all_win = "SMD + PR", 
+      first_win = "First Win, SMD + PR", 
+      all_win_pr = "PR", 
+      first_win_pr = "First Win, PR"
+    )
+  ) + 
+  scale_linetype_manual(
+    name = NULL,
+    values = c(
+      all_win = "solid", 
+      first_win = "dashed", 
+      all_win_pr = "solid", 
+      first_win_pr = "dashed"
+    ), 
+    labels = c(
+      all_win = "SMD + PR", 
+      first_win = "First Win, SMD + PR", 
+      all_win_pr = "PR", 
+      first_win_pr = "First Win, PR"
+    )
+  ) +
+  labs(
+    title = NULL,
+    x = NULL,
+    y = "Mean Age"
+  ) + 
+  theme_minimal() +
+  theme(
+    text = element_text(size = 20), 
+    legend.text = element_text(size = 13),
+    axis.title.x = element_text(
+      margin = margin(0, 0, 0, 0)
+    ),
+    axis.title.y = element_text(
+      margin = margin(0, 10, 0, 0)
+    ), 
+    legend.position = "bottom"
+  )
+ggsave("./figure/paper/age_first_win.pdf", width = 8, height = 6)
 
 
 

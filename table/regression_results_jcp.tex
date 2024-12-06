@@ -1,39 +1,45 @@
 
-\begin{table}
+\begin{table}[!htbp]
 \begin{center}
-\begin{tabular}{l c c c c c c c c c c}
-\hline
+\scalebox{0.7}{
+\begin{threeparttable}
+\begin{tabular}{l D{.}{.}{4.5} D{.}{.}{4.5} D{.}{.}{4.3} D{.}{.}{4.5} D{.}{.}{4.3} D{.}{.}{4.3} D{.}{.}{4.5} D{.}{.}{3.3} D{.}{.}{5.3} D{.}{.}{5.5}}
+\toprule
  & \multicolumn{4}{c}{List Rank} & \multicolumn{3}{c}{Dual Listing} & \multicolumn{3}{c}{Dual Listing (Tie)} \\
-\cline{2-5} \cline{6-8} \cline{9-11}
- & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6 & Model 7 & Model 8 & Model 9 & Model 10 \\
-\hline
-Total Wins       & $-0.22^{***}$ &               &           & $-0.10^{***}$ & $-0.03$   &           & $-0.04$      & $-2.19^{*}$ &             & $-1.40$      \\
-                 & $(0.02)$      &               &           & $(0.03)$      & $(0.05)$  &           & $(0.08)$     & $(0.98)$    &             & $(1.13)$     \\
-Incumbency       &               & $-0.95^{***}$ &           & $-0.72^{***}$ &           & $-0.12$   & $-0.17$      &             & $-19.85$    & $-17.22$     \\
-                 &               & $(0.08)$      &           & $(0.11)$      &           & $(0.23)$  & $(0.34)$     &             & $(2367.75)$ & $(2043.44)$  \\
-Dual Listing     &               &               & $0.07$    & $-0.06$       &           &           &              &             &             &              \\
-                 &               &               & $(0.06)$  & $(0.06)$      &           &           &              &             &             &              \\
-Tie              &               &               &           & $-0.03$       &           &           &              &             &             &              \\
-                 &               &               &           & $(0.11)$      &           &           &              &             &             &              \\
-Female           &               &               &           & $0.04$        &           &           & $-0.12$      &             &             & $-0.99^{*}$  \\
-                 &               &               &           & $(0.05)$      &           &           & $(0.21)$     &             &             & $(0.46)$     \\
-Block Magnitude  &               &               &           & $0.05^{***}$  &           &           & $0.07^{***}$ &             &             & $0.13^{***}$ \\
-                 &               &               &           & $(0.00)$      &           &           & $(0.01)$     &             &             & $(0.04)$     \\
-Total Wins x Tie &               &               &           & $0.29$        &           &           &              &             &             &              \\
-                 &               &               &           & $(0.51)$      &           &           &              &             &             &              \\
-\hline
-Year FE          & Yes           & Yes           & Yes       & Yes           & Yes       & Yes       & Yes          & Yes         & Yes         & Yes          \\
-Party FE         & No            & No            & No        & No            & No        & No        & No           & No          & No          & No           \\
-AIC              & $1775.10$     & $1750.64$     & $1897.57$ & $1568.00$     & $628.43$  & $628.60$  & $610.54$     & $178.03$    & $180.35$    & $162.47$     \\
-BIC              & $1820.69$     & $1796.23$     & $1943.16$ & $1638.45$     & $669.87$  & $670.04$  & $664.42$     & $219.48$    & $221.79$    & $216.34$     \\
-Log Likelihood   & $-876.55$     & $-864.32$     & $-937.78$ & $-767.00$     & $-304.21$ & $-304.30$ & $-292.27$    & $-79.02$    & $-80.18$    & $-68.23$     \\
-Deviance         & $385.60$      & $372.88$      & $423.51$  & $191.69$      & $608.43$  & $608.60$  & $584.54$     & $158.03$    & $160.35$    & $136.47$     \\
-Num. obs.        & $466$         & $466$         & $466$     & $466$         & $466$     & $466$     & $466$        & $466$       & $466$       & $466$        \\
-\hline
-\multicolumn{11}{l}{\scriptsize{\item $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. Standard errors in parentheses.
-\item Dependent variable: candidate $i$'s list rank (columns 1-4) dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).
-\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10).}}
+\cmidrule(lr){2-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11}
+ & \multicolumn{1}{c}{Model 1} & \multicolumn{1}{c}{Model 2} & \multicolumn{1}{c}{Model 3} & \multicolumn{1}{c}{Model 4} & \multicolumn{1}{c}{Model 5} & \multicolumn{1}{c}{Model 6} & \multicolumn{1}{c}{Model 7} & \multicolumn{1}{c}{Model 8} & \multicolumn{1}{c}{Model 9} & \multicolumn{1}{c}{Model 10} \\
+\midrule
+Total Wins       & -0.22^{***}             &                         &                         & -0.10^{***}             & -0.03                   &                         & -0.04                   & -2.19^{*}               &                         & -1.40                   \\
+                 & (0.02)                  &                         &                         & (0.03)                  & (0.05)                  &                         & (0.08)                  & (0.98)                  &                         & (1.13)                  \\
+Incumbency       &                         & -0.95^{***}             &                         & -0.72^{***}             &                         & -0.12                   & -0.17                   &                         & -19.85                  & -17.22                  \\
+                 &                         & (0.08)                  &                         & (0.11)                  &                         & (0.23)                  & (0.34)                  &                         & (2367.75)               & (2043.44)               \\
+Dual Listing     &                         &                         & 0.07                    & -0.06                   &                         &                         &                         &                         &                         &                         \\
+                 &                         &                         & (0.06)                  & (0.06)                  &                         &                         &                         &                         &                         &                         \\
+Tie              &                         &                         &                         & -0.03                   &                         &                         &                         &                         &                         &                         \\
+                 &                         &                         &                         & (0.11)                  &                         &                         &                         &                         &                         &                         \\
+Female           &                         &                         &                         & 0.04                    &                         &                         & -0.12                   &                         &                         & -0.99^{*}               \\
+                 &                         &                         &                         & (0.05)                  &                         &                         & (0.21)                  &                         &                         & (0.46)                  \\
+Block Magnitude  &                         &                         &                         & 0.05^{***}              &                         &                         & 0.07^{***}              &                         &                         & 0.13^{***}              \\
+                 &                         &                         &                         & (0.00)                  &                         &                         & (0.01)                  &                         &                         & (0.04)                  \\
+Total Wins x Tie &                         &                         &                         & 0.29                    &                         &                         &                         &                         &                         &                         \\
+                 &                         &                         &                         & (0.51)                  &                         &                         &                         &                         &                         &                         \\
+\midrule
+Year FE          & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\
+Party FE         & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  & \multicolumn{1}{c}{No}  \\
+AIC              & 1775.10                 & 1750.64                 & 1897.57                 & 1568.00                 & 628.43                  & 628.60                  & 610.54                  & 178.03                  & 180.35                  & 162.47                  \\
+BIC              & 1820.69                 & 1796.23                 & 1943.16                 & 1638.45                 & 669.87                  & 670.04                  & 664.42                  & 219.48                  & 221.79                  & 216.34                  \\
+Log Likelihood   & -876.55                 & -864.32                 & -937.78                 & -767.00                 & -304.21                 & -304.30                 & -292.27                 & -79.02                  & -80.18                  & -68.23                  \\
+Deviance         & 385.60                  & 372.88                  & 423.51                  & 191.69                  & 608.43                  & 608.60                  & 584.54                  & 158.03                  & 160.35                  & 136.47                  \\
+Num. obs.        & 466                     & 466                     & 466                     & 466                     & 466                     & 466                     & 466                     & 466                     & 466                     & 466                     \\
+\bottomrule
 \end{tabular}
+\begin{tablenotes}[flushleft]
+\scriptsize{\item $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. Standard errors in parentheses.
+\item Dependent variable: candidate $i$'s list rank (columns 1-4) dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).
+\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10).}
+\end{tablenotes}
+\end{threeparttable}
+}
 \caption{Regression Results for JCP Candidates}
 \label{tab:jcp}
 \end{center}

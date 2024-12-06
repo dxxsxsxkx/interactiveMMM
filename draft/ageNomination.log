@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  6 DEC 2024 13:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  6 DEC 2024 18:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -659,94 +659,176 @@ Underfull \hbox (badness 2856) in paragraph at lines 72--72
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-(../table/tab.age.intl.tex)
-<../figure/paper/age_smd_vs_pr_winners.pdf, id=95, 578.16pt x 433.62pt>
+<../figure/paper/dual_nomination.pdf, id=105, 578.16pt x 433.62pt>
+File: ../figure/paper/dual_nomination.pdf Graphic file (type pdf)
+<use ../figure/paper/dual_nomination.pdf>
+Package pdftex.def Info: ../figure/paper/dual_nomination.pdf  used on input lin
+e 97.
+(pdftex.def)             Requested size: 407.66833pt x 305.74846pt.
+
+(../table/list_structure.tex)
+<../figure/paper/marginal_effects_rank.pdf, id=106, 578.16pt x 433.62pt>
+File: ../figure/paper/marginal_effects_rank.pdf Graphic file (type pdf)
+<use ../figure/paper/marginal_effects_rank.pdf>
+Package pdftex.def Info: ../figure/paper/marginal_effects_rank.pdf  used on inp
+ut line 115.
+(pdftex.def)             Requested size: 407.66833pt x 305.74846pt.
+<../figure/paper/marginal_effects_dual_tie.pdf, id=107, 433.62pt x 578.16pt>
+File: ../figure/paper/marginal_effects_dual_tie.pdf Graphic file (type pdf)
+<use ../figure/paper/marginal_effects_dual_tie.pdf>
+Package pdftex.def Info: ../figure/paper/marginal_effects_dual_tie.pdf  used on
+ input line 121.
+(pdftex.def)             Requested size: 407.66833pt x 543.58516pt.
+ (../table/regression_results_ldp.tex
+Overfull \hbox (30.51147pt too wide) in paragraph at lines 46--47
+ [] 
+ []
+
+) (../table/regression_results_dpj_cdp.tex
+Overfull \hbox (6.38469pt too wide) in paragraph at lines 44--45
+ [] 
+ []
+
+) (../table/regression_results_ldp_2005_2012.tex) (../table/tab.age.intl.tex)
+[2 <../figure/paper/dual_nomination.pdf>] [3 <../figure/paper/marginal_effects_
+rank.pdf>] [4 <../figure/paper/marginal_effects_dual_tie.pdf>] [5] [6]
+(../table/tabFirstElection.tex)
+<../figure/paper/age_smd_vs_pr_winners.pdf, id=167, 578.16pt x 433.62pt>
 File: ../figure/paper/age_smd_vs_pr_winners.pdf Graphic file (type pdf)
 <use ../figure/paper/age_smd_vs_pr_winners.pdf>
 Package pdftex.def Info: ../figure/paper/age_smd_vs_pr_winners.pdf  used on inp
-ut line 146.
+ut line 174.
 (pdftex.def)             Requested size: 407.66833pt x 305.74846pt.
-<../figure/paper/age_first_run.pdf, id=96, 578.16pt x 433.62pt>
+<../figure/paper/age_first_run.pdf, id=168, 578.16pt x 433.62pt>
 File: ../figure/paper/age_first_run.pdf Graphic file (type pdf)
 <use ../figure/paper/age_first_run.pdf>
 Package pdftex.def Info: ../figure/paper/age_first_run.pdf  used on input line 
-154.
+182.
 (pdftex.def)             Requested size: 407.66833pt x 305.74846pt.
- [2] [3 <../figure/paper/age_smd_vs_pr_winners.pdf> <../figure/paper/age_first_
+ [7] [8 <../figure/paper/age_smd_vs_pr_winners.pdf> <../figure/paper/age_first_
 run.pdf>] (./ageNomination.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 11--14
 []\OT1/cmr/m/n/10.95 Ministry of In-ter-nal Af-fairs and Com-mu-ni-ca-tions (20
 24).  Elec-tion (Senkyo).
  []
 
-) [4] [5] (../table/tab.summary.M.tex
+) [9] (../table/tab.summary.candidate.tex
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
+l.1 ...aystretch}{1.1}\caption{Summary Statistics}
+                                                  \resizebox{\textwidth}{!}{)
+[10] (../table/tab.summary.M.tex
+pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
 l.28 \caption{Magnitudes of PR Blocks}
-                                      ) [6]
-<../figure/paper/pr_rank_distribution.pdf, id=143, 578.16pt x 433.62pt>
+                                      ) [11]
+<../figure/paper/pr_rank_distribution.pdf, id=217, 578.16pt x 433.62pt>
 File: ../figure/paper/pr_rank_distribution.pdf Graphic file (type pdf)
 <use ../figure/paper/pr_rank_distribution.pdf>
 Package pdftex.def Info: ../figure/paper/pr_rank_distribution.pdf  used on inpu
-t line 196.
+t line 225.
 (pdftex.def)             Requested size: 407.66833pt x 305.74846pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.197 	\caption{Distribution of List Rank}
-                                           [7 <../figure/paper/pr_rank_distribu
-tion.pdf>]
-<../figure/paper/age_first_win.pdf, id=155, 578.16pt x 433.62pt>
+l.226 	\caption{Distribution of List Rank}
+                                           [12 <../figure/paper/pr_rank_distrib
+ution.pdf>]
+<../figure/paper/age_first_win.pdf, id=227, 578.16pt x 433.62pt>
 File: ../figure/paper/age_first_win.pdf Graphic file (type pdf)
 <use ../figure/paper/age_first_win.pdf>
 Package pdftex.def Info: ../figure/paper/age_first_win.pdf  used on input line 
-206.
+235.
 (pdftex.def)             Requested size: 407.66833pt x 305.74846pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.207 ... Comparison: Average vs. New Legislators}
-                                                  
+l.236 ... Comparison: Average vs. New Legislators}
+                                                   [13 <../figure/paper/age_fir
+st_win.pdf>] (../table/regression_results.tex
+Overfull \hbox (43.65161pt too wide) in paragraph at lines 44--45
+ [] 
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.45 \caption{Regression Results}
+                                 ) [14]
+(../table/regression_results_komeito.tex
+Overfull \hbox (4.62517pt too wide) in paragraph at lines 42--43
+ [] 
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.43 ...Regression Results for Komeito Candidates}
+                                                  ) [15]
+(../table/regression_results_jcp.tex
+Overfull \hbox (36.13672pt too wide) in paragraph at lines 42--43
+ [] 
+ []
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{table.5}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.43 ...ion{Regression Results for JCP Candidates}
+                                                  )
 \tf@thm=\write4
 \openout4 = `ageNomination.thm'.
 
- [8 <../figure/paper/age_first_win.pdf>] (./ageNomination.aux)
+ [16] (./ageNomination.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `ageNomination.out' has not changed.
-(rerunfilecheck)             Checksum: 58DED3D96601983A05D97E364C9068F6;2929.
+(rerunfilecheck)             Checksum: 8A2503B6918581B68B67FB1F85C5654C;3517.
  ) 
 Here is how much of TeX's memory you used:
- 13378 strings out of 474116
- 211990 string characters out of 5743682
- 1940187 words of memory out of 5000000
- 35472 multiletter control sequences out of 15000+600000
- 571098 words of font info for 86 fonts, out of 8000000 for 9000
+ 13490 strings out of 474116
+ 215465 string characters out of 5743682
+ 2052187 words of memory out of 5000000
+ 35536 multiletter control sequences out of 15000+600000
+ 571406 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,12n,79p,1006b,478s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,15n,79p,1001b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texliv
-e/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on ageNomination.pdf (8 pages, 181006 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on ageNomination.pdf (16 pages, 266827 bytes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 180 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 340 PDF objects out of 1000 (max. 8388607)
+ 271 compressed objects within 3 object streams
+ 55 named destinations out of 1000 (max. 500000)
+ 212 words of extra memory for PDF output out of 10000 (max. 10000000)
 

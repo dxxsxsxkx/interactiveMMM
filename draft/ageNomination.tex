@@ -93,6 +93,14 @@ I argue that interactive mixed-member majoritarian systems (interactive MMMs), a
 
 % TODO: write
 
+\begin{figure}[!htbp]
+	\includegraphics[width = 0.9\textwidth]{../figure/paper/dual_nomination.pdf}
+	\caption{Share of Dual-Listed Candidates among PR Winners}
+	\label{fig:dual}
+\end{figure}
+
+\input{../table/list_structure.tex}
+
 \section{Data and Method} \label{sec: emp}
 
 % TODO: write
@@ -103,11 +111,30 @@ I argue that interactive mixed-member majoritarian systems (interactive MMMs), a
 
 % TODO: write
 
+\begin{figure}[!htbp]
+	\includegraphics[width = 0.9\textwidth]{../figure/paper/marginal_effects_rank.pdf}
+	\caption{Marginal Effects of Seniority, Incumbency, Dual Listing, and Tie Status on List Rank}
+	\label{fig:marginal_rank}
+\end{figure}
+
+\begin{figure}[!htbp]
+	\includegraphics[width = 0.9\textwidth]{../figure/paper/marginal_effects_dual_tie.pdf}
+	\caption{Marginal Effects of Seniority and Incumbency on Dual Listing}
+	\label{fig:marginal_dual}
+\end{figure}
+
+
 \subsection{Party-Specific Analysis}
 
 % TODO: write
 
+\input{../table/regression_results_ldp.tex}
+
+\input{../table/regression_results_dpj_cdp.tex}
+
 \subsection{Election- / Party-Specific Analysis}
+
+\input{../table/regression_results_ldp_2005_2012.tex}
 
 % TODO: write
 
@@ -139,6 +166,8 @@ I argue that interactive mixed-member majoritarian systems (interactive MMMs), a
 \end{center}
 \end{table}
 
+
+\input{../table/tabFirstElection.tex}
 
 
 \begin{figure}[!htbp]
@@ -177,13 +206,14 @@ I argue that interactive mixed-member majoritarian systems (interactive MMMs), a
 
 \section{Summary Statistics}
 
-\subsection{Candidate-Level Summary}
+\subsection{Candidate-Level Summary Statistics}
 
 % TODO: add a revised table
+\input{../table/tab.summary.candidate.tex}
 
 \newpage
 
-\subsection{Magnitudes of PR Blocks, 1996 - 2017}
+\subsection{Magnitudes of PR Blocks, 1996 - 2021}
 
 \input{../table/tab.summary.M}
 
@@ -206,6 +236,28 @@ I argue that interactive mixed-member majoritarian systems (interactive MMMs), a
 	\caption{Age Comparison: Average vs. New Legislators}
 	\label{fig:ageFirstWin}
 \end{figure}	
+
+\newpage
+
+\section{Additional Analyses}
+
+\subsection{Aggregate-level Regression Table}
+
+\input{../table/regression_results.tex}
+
+\newpage
+
+\subsection{Party-level Analysis}
+
+\subsubsection*{Komeito}
+
+\input{../table/regression_results_komeito.tex}
+
+\newpage
+
+\subsubsection*{JCP}
+
+\input{../table/regression_results_jcp.tex}
 
 \end{document}
 
