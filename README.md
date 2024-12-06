@@ -1,17 +1,13 @@
 ## Overview
 
-This repository contains data and code for the project "Youth Representation and Parties' Nomination Strategy in Mixed Member Systems".
+This repository contains data and code for the project "Party Nomination Strategy and its Representational Consequences in Interactive Mixed-Member Majoritarian Systems".
 
 ## Contents
 
--   "code": stores scripts used in the analysis.
+-   "code": stores a script that replicates figures and tables in the paper.
 
 -   "data_raw": contains raw data.
 
--   "data_analysis": contains data used in the analysis.
+-   "figure": stores figures.
 
--   "figure": stores figures drawn.
-
--   "table": stores tables created.
-
--   "model": stores models fitted in "./code/analysis.R".
+-   "table": stores tables.
