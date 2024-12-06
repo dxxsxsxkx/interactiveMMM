@@ -1,17 +1,9 @@
 # read packages
 library(tidyverse)
 library(MASS)
-library(ordinal)
-library(nnet)
 library(texreg)
 library(estimatr)
-library(pscl)
-library(boot)
-library(lmtest)
-library(margins)
 library(marginaleffects)
-library(xtable)
-library(vtable)
 library(sandwich)
 library(cowplot)
 library(effects)
@@ -74,7 +66,7 @@ data.pr <- data |>  # PR (including dual-listed candidates)
   AddVariables() |> 
   CalculatePastPRSeats() |> 
   CategorizeRanks() |>   
-  select(
+  dplyr::select(
     name_jp, legis, year, 
     party_en, prcode, pr_m, pr_rank, 
     totcwinsT, is_dual, incBinary, female, age
@@ -502,3 +494,475 @@ marginal_effects_tie |>
   ) +
   theme_minimal() + 
   theme(legend.position = "right")
+
+# Party- and election-specific analysis
+# LDP
+fit.rank.seniority.ldp <- glm.nb(
+  data = data.ldp, 
+  pr_rank ~ totcwinsT + as.factor(legis)
+)
+fit.rank.incumbency.ldp <- glm.nb(
+  data = data.ldp, 
+  pr_rank ~ incBinary + as.factor(legis) 
+)
+fit.rank.dual.ldp <- glm.nb(
+  data = data.ldp, 
+  pr_rank ~ is_dual + as.factor(legis) 
+)
+fit.rank.ldp <- glm.nb(
+  data = data.ldp, 
+  pr_rank ~ totcwinsT + female + is_tie + incBinary + is_dual + 
+    is_tie:totcwinsT + is_tie:incBinary + is_tie:is_dual + 
+    pr_m + as.factor(legis)
+)
+fit.dual.seniority.ldp <- glm(
+  data = data.ldp, 
+  is_dual ~ totcwinsT + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.dual.incumbency.ldp <- glm(
+  data = data.ldp, 
+  is_dual ~ incBinary + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.dual.ldp <- glm(
+  data = data.ldp, 
+  is_dual ~ totcwinsT + female + incBinary + pr_m + 
+    as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.seniority.ldp <- glm(
+  data = data.ldp, 
+  is_tie ~ totcwinsT + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.incumbency.ldp <- glm(
+  data = data.ldp, 
+  is_tie ~ incBinary + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.ldp <- glm(
+  data = data.ldp, 
+  is_tie ~ totcwinsT + female + incBinary + pr_m + 
+    as.factor(legis), 
+  family = binomial(link = "logit")
+)
+
+# DPJ + CDP
+fit.rank.seniority.dpj.cdp <- glm.nb(
+  data = data.dpj.cdp, 
+  pr_rank ~ totcwinsT + as.factor(legis)
+)
+fit.rank.incumbency.dpj.cdp <- glm.nb(
+  data = data.dpj.cdp, 
+  pr_rank ~ incBinary + as.factor(legis) 
+)
+fit.rank.dual.dpj.cdp <- glm.nb(
+  data = data.dpj.cdp, 
+  pr_rank ~ is_dual + as.factor(legis) 
+)
+fit.rank.dpj.cdp <- glm.nb(
+  data = data.dpj.cdp, 
+  pr_rank ~ totcwinsT + female + is_tie + incBinary + is_dual + 
+    is_tie:totcwinsT + is_tie:incBinary + is_tie:is_dual + 
+    pr_m + as.factor(legis), 
+)
+fit.dual.seniority.dpj.cdp <- glm(
+  data = data.dpj.cdp, 
+  is_dual ~ totcwinsT + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.dual.incumbency.dpj.cdp <- glm(
+  data = data.dpj.cdp, 
+  is_dual ~ incBinary + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.dual.dpj.cdp <- glm(
+  data = data.dpj.cdp, 
+  is_dual ~ totcwinsT + female + incBinary + pr_m + 
+    as.factor(legis),
+  family = binomial(link = "logit")
+)
+fit.tie.seniority.dpj.cdp <- glm(
+  data = data.dpj.cdp, 
+  is_tie ~ totcwinsT + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.incumbency.dpj.cdp <- glm(
+  data = data.dpj.cdp, 
+  is_tie ~ incBinary + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.dpj.cdp <- glm(
+  data = data.dpj.cdp, 
+  is_tie ~ totcwinsT + female + incBinary + pr_m + 
+    as.factor(legis),
+  family = binomial(link = "logit")
+)
+
+# Komeito
+fit.rank.seniority.komeito <- glm.nb(
+  data = data.komeito, 
+  pr_rank ~ totcwinsT + as.factor(legis)
+)
+fit.rank.incumbency.komeito <- glm.nb(
+  data = data.komeito, 
+  pr_rank ~ incBinary + as.factor(legis) 
+)
+fit.rank.dual.komeito <- glm.nb(
+  data = data.komeito, 
+  pr_rank ~ is_dual + as.factor(legis) 
+)
+fit.rank.komeito <- glm.nb(
+  data = data.komeito, 
+  pr_rank ~ totcwinsT + female + is_tie + incBinary + is_dual + 
+    is_tie:totcwinsT + is_tie:incBinary + is_tie:is_dual + 
+    pr_m + as.factor(legis)
+)
+fit.dual.seniority.komeito <- glm(
+  data = data.komeito, 
+  is_dual ~ totcwinsT + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.dual.incumbency.komeito <- glm(
+  data = data.komeito, 
+  is_dual ~ incBinary + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.dual.komeito <- glm(
+  data = data.komeito, 
+  is_dual ~ totcwinsT + female + incBinary + pr_m + 
+    as.factor(legis),
+  family = binomial(link = "logit")
+)
+fit.tie.seniority.komeito <- glm(
+  data = data.komeito, 
+  is_tie ~ totcwinsT + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.incumbency.komeito <- glm(
+  data = data.komeito, 
+  is_tie ~ incBinary + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.komeito <- glm(
+  data = data.komeito, 
+  is_tie ~ totcwinsT + female + incBinary + pr_m + 
+    as.factor(legis),
+  family = binomial(link = "logit")
+)
+
+# JCP
+fit.rank.seniority.jcp <- glm.nb(
+  data = data.jcp, 
+  pr_rank ~ totcwinsT + as.factor(legis)
+)
+fit.rank.incumbency.jcp <- glm.nb(
+  data = data.jcp, 
+  pr_rank ~ incBinary + as.factor(legis) 
+)
+fit.rank.dual.jcp <- glm.nb(
+  data = data.jcp, 
+  pr_rank ~ is_dual + as.factor(legis) 
+)
+fit.rank.jcp <- glm.nb(
+  data = data.jcp, 
+  pr_rank ~ totcwinsT + female + is_tie + incBinary + is_dual + 
+    is_tie:totcwinsT + is_tie:incBinary + is_tie:is_dual + 
+    pr_m + as.factor(legis)
+)
+fit.dual.seniority.jcp <- glm(
+  data = data.jcp, 
+  is_dual ~ totcwinsT + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.dual.incumbency.jcp <- glm(
+  data = data.jcp, 
+  is_dual ~ incBinary + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.dual.jcp <- glm(
+  data = data.jcp, 
+  is_dual ~ totcwinsT + female + incBinary + pr_m + 
+    as.factor(legis),
+  family = binomial(link = "logit")
+)
+fit.tie.seniority.jcp <- glm(
+  data = data.jcp, 
+  is_tie ~ totcwinsT + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.incumbency.jcp <- glm(
+  data = data.jcp, 
+  is_tie ~ incBinary + as.factor(legis), 
+  family = binomial(link = "logit")
+)
+fit.tie.jcp <- glm(
+  data = data.jcp, 
+  is_tie ~ totcwinsT + female + incBinary + pr_m + 
+    as.factor(legis),
+  family = binomial(link = "logit")
+)
+
+# 2005 and 2012 LDP
+fit.rank.ldp.2005 <- glm.nb(
+  data = data.ldp.2005, 
+  pr_rank ~ totcwinsT + female + is_tie + incBinary + is_dual + 
+    is_tie:totcwinsT + is_tie:incBinary + is_tie:is_dual + 
+    pr_m
+)
+fit.dual.ldp.2005 <- glm(
+  data = data.ldp.2005, 
+  is_dual ~ totcwinsT + female + incBinary + pr_m,
+  family = binomial(link = "logit")
+)
+fit.tie.ldp.2005 <- glm(
+  data = data.ldp.2005, 
+  is_tie ~ totcwinsT + female + incBinary + pr_m,
+  family = binomial(link = "logit")
+)
+fit.rank.ldp.2012 <- glm.nb(
+  data = data.ldp.2012, 
+  pr_rank ~ totcwinsT + female + incBinary + is_dual + 
+    is_dual:totcwinsT + is_dual:incBinary + 
+    pr_m
+)
+fit.dual.ldp.2012 <- glm(
+  data = data.ldp.2012, 
+  is_dual ~ totcwinsT + female + incBinary + pr_m,
+  family = binomial(link = "logit")
+)
+
+# Regression tables
+# LDP
+screenreg(
+  list(
+    fit.rank.seniority.ldp, 
+    fit.rank.incumbency.ldp, 
+    fit.rank.dual.ldp, 
+    fit.rank.ldp,
+    fit.dual.seniority.ldp, 
+    fit.dual.incumbency.ldp, 
+    fit.dual.ldp, 
+    fit.tie.seniority.ldp, 
+    fit.tie.incumbency.ldp, 
+    fit.tie.ldp
+  ),
+  custom.header = list(
+    "List Rank" = 1:4, 
+    "Dual Listing" = 5:7,
+    "Dual Listing (Tie)" = 8:10
+  ), 
+  custom.coef.map = list(
+    "totcwinsT" = "Total Wins", 
+    "incBinary" = "Incumbency", 
+    "is_dual1" = "Dual Listing", 
+    "is_tieTRUE" = "Tie", 
+    "female"  = "Female", 
+    "pr_m" = "Block Magnitude", 
+    "totcwinsT:is_tieTRUE" = "Total Wins x Tie",
+    "is_tieTRUE:incBinary" = "Tie x Incumbency",
+    "is_tieTRUE:is_dual1" = "Tie x Dual Listing"
+  ), 
+  custom.gof.rows = list(
+    "Year FE" = c(rep("Yes", 10)),
+    "Party FE" = c(rep("No", 10))
+  ), 
+  custom.note = paste0(
+    "\\item %stars. Standard errors in parentheses.\n", 
+    "\\item Dependent variable: candidate $i$'s list rank (columns 1-4) ", 
+    "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
+    "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
+  ), 
+  caption = "Regression Results for LDP Candidates"
+)
+
+# DPJ + CDP
+screenreg(
+  list(
+    fit.rank.seniority.dpj.cdp, 
+    fit.rank.incumbency.dpj.cdp, 
+    fit.rank.dual.dpj.cdp, 
+    fit.rank.dpj.cdp,
+    fit.dual.seniority.dpj.cdp, 
+    fit.dual.incumbency.dpj.cdp, 
+    fit.dual.dpj.cdp, 
+    fit.tie.seniority.dpj.cdp, 
+    fit.tie.incumbency.dpj.cdp, 
+    fit.tie.dpj.cdp
+  ),
+  custom.header = list(
+    "List Rank" = 1:4, 
+    "Dual Listing" = 5:7,
+    "Dual Listing (Tie)" = 8:10
+  ), 
+  custom.coef.map = list(
+    "totcwinsT" = "Total Wins", 
+    "incBinary" = "Incumbency", 
+    "is_dual1" = "Dual Listing", 
+    "is_tieTRUE" = "Tie", 
+    "female"  = "Female", 
+    "pr_m" = "Block Magnitude", 
+    "totcwinsT:is_tieTRUE" = "Total Wins x Tie",
+    "is_tieTRUE:incBinary" = "Tie x Incumbency",
+    "is_tieTRUE:is_dual1" = "Tie x Dual Listing"
+  ), 
+  custom.gof.rows = list(
+    "Year FE" = c(rep("Yes", 10)),
+    "Party FE" = c(rep("No", 10))
+  ), 
+  custom.note = paste0(
+    "\\item %stars. Standard errors in parentheses.\n", 
+    "\\item Dependent variable: candidate $i$'s list rank (columns 1-4) ", 
+    "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
+    "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
+  ), 
+  caption = "Regression Results for DPJ / CDP Candidates"
+)
+
+# Komeito
+screenreg(
+  list(
+    fit.rank.seniority.komeito, 
+    fit.rank.incumbency.komeito, 
+    fit.rank.dual.komeito, 
+    fit.rank.komeito,
+    fit.dual.seniority.komeito, 
+    fit.dual.incumbency.komeito, 
+    fit.dual.komeito, 
+    fit.tie.seniority.komeito, 
+    fit.tie.incumbency.komeito, 
+    fit.tie.komeito
+  ),
+  custom.header = list(
+    "List Rank" = 1:4, 
+    "Dual Listing" = 5:7,
+    "Dual Listing (Tie)" = 8:10
+  ), 
+  custom.coef.map = list(
+    "totcwinsT" = "Total Wins", 
+    "incBinary" = "Incumbency", 
+    "is_dual1" = "Dual Listing", 
+    "is_tieTRUE" = "Tie", 
+    "female"  = "Female", 
+    "pr_m" = "Block Magnitude", 
+    "totcwinsT:is_tieTRUE" = "Total Wins x Tie",
+    "is_tieTRUE:incBinary" = "Tie x Incumbency",
+    "is_tieTRUE:is_dual1" = "Tie x Dual Listing"
+  ), 
+  custom.gof.rows = list(
+    "Year FE" = c(rep("Yes", 10)),
+    "Party FE" = c(rep("No", 10))
+  ), 
+  custom.note = paste0(
+    "\\item %stars. Standard errors in parentheses.\n", 
+    "\\item Dependent variable: candidate $i$'s list rank (columns 1-4) ", 
+    "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
+    "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
+  ), 
+  caption = "Regression Results for Komeito Candidates"
+)
+
+# JCP
+screenreg(
+  list(
+    fit.rank.seniority.jcp, 
+    fit.rank.incumbency.jcp, 
+    fit.rank.dual.jcp, 
+    fit.rank.jcp,
+    fit.dual.seniority.jcp, 
+    fit.dual.incumbency.jcp, 
+    fit.dual.jcp, 
+    fit.tie.seniority.jcp, 
+    fit.tie.incumbency.jcp, 
+    fit.tie.jcp
+  ),
+  custom.header = list(
+    "List Rank" = 1:4, 
+    "Dual Listing" = 5:7,
+    "Dual Listing (Tie)" = 8:10
+  ), 
+  custom.coef.map = list(
+    "totcwinsT" = "Total Wins", 
+    "incBinary" = "Incumbency", 
+    "is_dual1" = "Dual Listing", 
+    "is_tieTRUE" = "Tie", 
+    "female"  = "Female", 
+    "pr_m" = "Block Magnitude", 
+    "totcwinsT:is_tieTRUE" = "Total Wins x Tie",
+    "is_tieTRUE:incBinary" = "Tie x Incumbency",
+    "is_tieTRUE:is_dual1" = "Tie x Dual Listing"
+  ), 
+  custom.gof.rows = list(
+    "Year FE" = c(rep("Yes", 10)),
+    "Party FE" = c(rep("No", 10))
+  ), 
+  custom.note = paste0(
+    "\\item %stars. Standard errors in parentheses.\n", 
+    "\\item Dependent variable: candidate $i$'s list rank (columns 1-4) ", 
+    "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
+    "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
+  ), 
+  caption = "Regression Results for JCP Candidates"
+)
+
+# 2005 and 2012 LDP
+screenreg(
+  list(
+    fit.rank.ldp.2005, 
+    fit.dual.ldp.2005, 
+    fit.tie.ldp.2005,
+    fit.rank.ldp.2012, 
+    fit.dual.ldp.2012
+  ),
+  custom.header = list(
+    "2005" = 1:3, 
+    "2012" = 4:5
+  ), 
+  custom.model.names = c(
+    "List Rank",
+    "Dual Listing",
+    "Tie", 
+    "List Rank",
+    "Dual Listing"
+  ), 
+  custom.coef.map = list(
+    "totcwinsT" = "Total Wins", 
+    "incBinary" = "Incumbency", 
+    "is_dual1" = "Dual Listing", 
+    "is_tieTRUE" = "Tie", 
+    "female"  = "Female", 
+    "pr_m" = "Block Magnitude", 
+    "totcwinsT:is_tieTRUE" = "Total Wins x Tie",
+    "is_tieTRUE:incBinary" = "Tie x Incumbency",
+    "is_tieTRUE:is_dual1" = "Tie x Dual Listing"
+  ), 
+  custom.gof.rows = list(
+    "Year FE" = c(rep("Yes", 5)),
+    "Party FE" = c(rep("No", 5))
+  ), 
+  custom.note = paste0(
+    "\\item %stars. Standard errors in parentheses.\n", 
+    "\\item Dependent variable: candidate $i$'s list rank (columns 1 / 3) ", 
+    "dual listing status (columns 2 / 4), and whether the candidate has a tie on the list (columns 3 / 6).\n", 
+    "\\item Estimated models: negatige binomial (columns 1 / 4) and logit (columns 2-3, 5-6). \n", 
+    "\\textit{Note.} All dual-listed LDP candidates in the 2012 general election had ties on the list."
+  ), 
+  caption = "Regression Results for JCP Candidates"
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
