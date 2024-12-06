@@ -1,34 +1,45 @@
 
-\begin{table}[!bth]
+\begin{table}
 \begin{center}
-\begin{threeparttable}
-\begin{tabular}{l D{.}{.}{4.5} D{.}{.}{4.5} D{.}{.}{4.5} D{.}{.}{4.5}}
-\toprule
- & \multicolumn{2}{c}{2005 LDP} & \multicolumn{2}{c}{2012 LDP} \\
-\cmidrule(lr){2-3} \cmidrule(lr){4-5}
- & \multicolumn{1}{c}{H1} & \multicolumn{1}{c}{H3} & \multicolumn{1}{c}{H1} & \multicolumn{1}{c}{H3} \\
-\midrule
-Total Wins      & 0.30^{***} & -0.12^{***} & 0.83^{***} & -0.28^{***} \\
-                & (0.08)     & (0.02)      & (0.21)     & (0.03)      \\
-Female          & 0.34       & -0.77^{***} & 0.59       & -0.17       \\
-                & (0.58)     & (0.18)      & (0.68)     & (0.27)      \\
-Block Magnitude & 0.04       & 0.02^{***}  & 0.10^{***} & -0.03^{*}   \\
-                & (0.02)     & (0.01)      & (0.03)     & (0.01)      \\
-\midrule
-AIC             & 290.29     & 1966.49     & 227.62     & 1622.67     \\
-BIC             & 305.56     & 1985.57     & 242.77     & 1641.60     \\
-Log Likelihood  & -141.14    & -978.24     & -109.81    & -806.33     \\
-Deviance        & 282.29     & 326.21      & 219.62     & 322.75      \\
-Num. obs.       & 336        & 336         & 326        & 326         \\
-\bottomrule
+\begin{tabular}{l c c c c c}
+\hline
+ & \multicolumn{3}{c}{2005} & \multicolumn{2}{c}{2012} \\
+\cline{2-4} \cline{5-6}
+ & List Rank & Dual Listing & Tie & List Rank & Dual Listing \\
+\hline
+Total Wins         & $-0.01$       & $0.03$       & $0.06$       & $0.02$        & $0.61^{*}$   \\
+                   & $(0.02)$      & $(0.09)$     & $(0.08)$     & $(0.04)$      & $(0.25)$     \\
+Incumbency         & $-2.03^{***}$ & $1.76^{***}$ & $1.47^{***}$ & $-0.23$       & $1.48$       \\
+                   & $(0.16)$      & $(0.46)$     & $(0.42)$     & $(0.28)$      & $(1.21)$     \\
+Dual Listing       & $-1.77^{***}$ &              &              & $-3.41^{***}$ &              \\
+                   & $(0.17)$      &              &              & $(0.09)$      &              \\
+Tie                & $-3.26^{**}$  &              &              &               &              \\
+                   & $(1.01)$      &              &              &               &              \\
+Female             & $-0.56^{***}$ & $0.52$       & $-0.31$      & $-0.06$       & $0.57$       \\
+                   & $(0.10)$      & $(0.59)$     & $(0.48)$     & $(0.12)$      & $(0.69)$     \\
+Block Magnitude    & $0.04^{***}$  & $0.04$       & $0.05^{*}$   & $0.04^{***}$  & $0.10^{***}$ \\
+                   & $(0.00)$      & $(0.02)$     & $(0.02)$     & $(0.00)$      & $(0.03)$     \\
+Total Wins x Tie   & $0.01$        &              &              &               &              \\
+                   & $(0.02)$      &              &              &               &              \\
+Tie x Incumbency   & $2.00^{***}$  &              &              &               &              \\
+                   & $(0.18)$      &              &              &               &              \\
+Tie x Dual Listing & $3.11^{**}$   &              &              &               &              \\
+                   & $(1.02)$      &              &              &               &              \\
+\hline
+Year FE            & Yes           & Yes          & Yes          & Yes           & Yes          \\
+Party FE           & No            & No           & No           & No            & No           \\
+AIC                & $1418.21$     & $276.68$     & $310.14$     & $910.24$      & $227.80$     \\
+BIC                & $1460.19$     & $295.77$     & $329.23$     & $944.33$      & $246.73$     \\
+Log Likelihood     & $-698.10$     & $-133.34$    & $-150.07$    & $-446.12$     & $-108.90$    \\
+Deviance           & $228.28$      & $266.68$     & $300.14$     & $84.16$       & $217.80$     \\
+Num. obs.          & $336$         & $336$        & $336$        & $326$         & $326$        \\
+\hline
+\multicolumn{6}{l}{\scriptsize{\item $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. Standard errors in parentheses.
+\item Dependent variable: candidate $i$'s list rank (columns 1 / 3) dual listing status (columns 2 / 4), and whether the candidate has a tie on the list (columns 3 / 6).
+\item Estimated models: negatige binomial (columns 1 / 4) and logit (columns 2-3, 5-6). 
+\textit{Note.} All dual-listed LDP candidates in the 2012 general election had ties on the list.}}
 \end{tabular}
-\begin{tablenotes}[flushleft]
-\scriptsize{\item $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. Standard errors in parentheses.
-\item Dependent variable: candidate $i$'s dual listing status (H1) and list rank (H3).
-\item Estimated models: logit (H1) and negative binomial (H3).}
-\end{tablenotes}
-\end{threeparttable}
 \caption{Regression Results for LDP Candidates in 2005 and 2012}
-\label{tab:regLDP2005_2012}
+\label{tab:ldp_2005_2012}
 \end{center}
 \end{table}

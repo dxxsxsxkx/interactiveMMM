@@ -1,40 +1,42 @@
 
-\begin{table}[!bth]
+\begin{table}
 \begin{center}
-\begin{threeparttable}
-\begin{tabular}{l D{.}{.}{5.5} D{.}{.}{5.5} D{.}{.}{6.5} D{.}{.}{6.5} D{.}{.}{6.5}}
-\toprule
- & \multicolumn{2}{c}{Dual Listing} & \multicolumn{3}{c}{List Rank} \\
-\cmidrule(lr){2-3} \cmidrule(lr){4-6}
- & \multicolumn{1}{c}{H1} & \multicolumn{1}{c}{H2} & \multicolumn{1}{c}{H3} & \multicolumn{1}{c}{H4} & \multicolumn{1}{c}{H5} \\
-\midrule
-Total Wins      & 0.14^{***}              &                         & -0.14^{***}             &                         &                         \\
-                & (0.02)                  &                         & (0.01)                  &                         &                         \\
-Incumbency      &                         & 1.22^{***}              &                         & -0.98^{***}             &                         \\
-                &                         & (0.09)                  &                         & (0.03)                  &                         \\
-Dual Listing    &                         &                         &                         &                         & -1.79^{***}             \\
-                &                         &                         &                         &                         & (0.03)                  \\
-Female          & -0.24^{*}               & -0.22^{*}               & 0.03                    & 0.02                    & 0.01                    \\
-                & (0.10)                  & (0.11)                  & (0.04)                  & (0.04)                  & (0.03)                  \\
-Block Magnitude & 0.04^{***}              & 0.04^{***}              & 0.02^{***}              & 0.02^{***}              & 0.02^{***}              \\
-                & (0.01)                  & (0.01)                  & (0.00)                  & (0.00)                  & (0.00)                  \\
-\midrule
-Year FE         & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\
-Party FE        & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} & \multicolumn{1}{c}{Yes} \\
-AIC             & 5185.26                 & 5043.49                 & 33356.34                & 32718.87                & 29782.13                \\
-BIC             & 5452.19                 & 5310.42                 & 33630.11                & 32992.65                & 30055.90                \\
-Log Likelihood  & -2553.63                & -2482.74                & -16638.17               & -16319.44               & -14851.06               \\
-Deviance        & 5107.26                 & 4965.49                 & 6304.56                 & 6162.61                 & 5415.58                 \\
-Num. obs.       & 6935                    & 6935                    & 6935                    & 6935                    & 6935                    \\
-\bottomrule
+\begin{tabular}{l c c c c c c c c c c}
+\hline
+ & \multicolumn{4}{c}{List Rank} & \multicolumn{3}{c}{Dual Listing} & \multicolumn{3}{c}{Dual Listing (Tie)} \\
+\cline{2-5} \cline{6-8} \cline{9-11}
+ & Model 1 & Model 2 & Model 3 & Model 4 & Model 5 & Model 6 & Model 7 & Model 8 & Model 9 & Model 10 \\
+\hline
+Total Wins         & $-0.15^{***}$ &               &               & $-0.10^{***}$ & $0.16^{***}$ &              & $-0.00$      & $0.14^{***}$ &              & $0.00$        \\
+                   & $(0.01)$      &               &               & $(0.02)$      & $(0.04)$     &              & $(0.02)$     & $(0.04)$     &              & $(0.02)$      \\
+Incumbency         &               & $-1.02^{***}$ &               & $-0.74^{***}$ &              & $1.33^{***}$ & $1.33^{***}$ &              & $1.16^{***}$ & $1.13^{***}$  \\
+                   &               & $(0.12)$      &               & $(0.11)$      &              & $(0.28)$     & $(0.28)$     &              & $(0.32)$     & $(0.31)$      \\
+Dual Listing       &               &               & $-1.82^{***}$ & $-0.93^{***}$ &              &              &              &              &              &               \\
+                   &               &               & $(0.25)$      & $(0.27)$      &              &              &              &              &              &               \\
+Tie                &               &               &               & $-1.92^{*}$   &              &              &              &              &              &               \\
+                   &               &               &               & $(0.86)$      &              &              &              &              &              &               \\
+Female             &               &               &               & $-0.07$       &              &              & $-0.24^{*}$  &              &              & $-0.40^{***}$ \\
+                   &               &               &               & $(0.04)$      &              &              & $(0.12)$     &              &              & $(0.11)$      \\
+Block Magnitude    &               &               &               & $0.02^{***}$  &              &              & $0.04^{***}$ &              &              & $0.04^{***}$  \\
+                   &               &               &               & $(0.01)$      &              &              & $(0.01)$     &              &              & $(0.01)$      \\
+Total Wins x Tie   &               &               &               & $0.10^{***}$  &              &              &              &              &              &               \\
+                   &               &               &               & $(0.02)$      &              &              &              &              &              &               \\
+Tie x Incumbency   &               &               &               & $0.49^{**}$   &              &              &              &              &              &               \\
+                   &               &               &               & $(0.18)$      &              &              &              &              &              &               \\
+Tie x Dual Listing &               &               &               & $0.84$        &              &              &              &              &              &               \\
+                   &               &               &               & $(0.91)$      &              &              &              &              &              &               \\
+\hline
+Year FE            & Yes           & Yes           & Yes           & Yes           & Yes          & Yes          & Yes          & Yes          & Yes          & Yes           \\
+Party FE           & Yes           & Yes           & Yes           & Yes           & Yes          & Yes          & Yes          & Yes          & Yes          & Yes           \\
+AIC                & $37167.39$    & $36446.03$    & $33098.42$    & $31652.57$    & $5886.23$    & $5697.89$    & $5629.09$    & $5949.29$    & $5803.79$    & $5729.36$     \\
+Log Likelihood     & $-18536.69$   & $-18176.02$   & $-16502.21$   & $-15771.28$   & $-2897.12$   & $-2802.94$   & $-2765.54$   & $-2928.64$   & $-2855.90$   & $-2815.68$    \\
+Num. obs.          & $7754$        & $7754$        & $7754$        & $7754$        & $7754$       & $7754$       & $7754$       & $7754$       & $7754$       & $7754$        \\
+\hline
+\multicolumn{11}{l}{\scriptsize{\item $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. Standard errors clustered at the party level in parentheses.
+\item Dependent variable: candidate $i$'s list rank (columns 1-4) dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).
+\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10).}}
 \end{tabular}
-\begin{tablenotes}[flushleft]
-\scriptsize{\item $^{***}p<0.001$; $^{**}p<0.01$; $^{*}p<0.05$. Standard errors in parentheses.
-\item Dependent variable: candidate $i$'s dual listing status (H1-2) and list rank (H3-5).
-\item Estimated models: logit (H1-2) and negative binomial (H3-5).}
-\end{tablenotes}
-\end{threeparttable}
 \caption{Regression Results}
-\label{tab:reg}
+\label{tab:regression_results}
 \end{center}
 \end{table}

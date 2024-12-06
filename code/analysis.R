@@ -249,7 +249,7 @@ texreg.tie <- createTexreg(
 )
 
 # regression tables
-screenreg(
+texreg(
   list(
     texreg.rank.seniority, 
     texreg.rank.incumbency, 
@@ -288,7 +288,9 @@ screenreg(
     "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
-  caption = "Regression Results"
+  caption = "Regression Results", 
+  file = "./table/regression_results.tex", 
+  label = "tab:regression_results"
 )
 
 # marginal effects plot
@@ -383,6 +385,11 @@ marginal_effects_rank |>
   ) +
   theme_minimal() + 
   theme(legend.position = "right")
+ggsave(
+  "./figure/paper/marginal_effects_rank.pdf", 
+  width = 8, 
+  height = 6
+)
 
 # Dual listing
 marginal_effects_dual <- slopes(
@@ -434,6 +441,11 @@ marginal_effects_dual |>
   ) +
   theme_minimal() + 
   theme(legend.position = "right")
+ggsave(
+  "./figure/paper/marginal_effects_dual.pdf", 
+  width = 8, 
+  height = 6
+)
 
 marginal_effects_tie <- slopes(
   fit.tie, 
@@ -484,6 +496,11 @@ marginal_effects_tie |>
   ) +
   theme_minimal() + 
   theme(legend.position = "right")
+ggsave(
+  "./figure/paper/marginal_effects_tie.pdf", 
+  width = 8, 
+  height = 6
+)
 
 # Party- and election-specific analysis
 # LDP
@@ -725,7 +742,7 @@ fit.dual.ldp.2012 <- glm(
 
 # Regression tables
 # LDP
-screenreg(
+texreg(
   list(
     fit.rank.seniority.ldp, 
     fit.rank.incumbency.ldp, 
@@ -764,11 +781,13 @@ screenreg(
     "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
-  caption = "Regression Results for LDP Candidates"
+  caption = "Regression Results for LDP Candidates", 
+  file = "./table/regression_results_ldp.tex", 
+  label = "tab:ldp"
 )
 
 # DPJ + CDP
-screenreg(
+texreg(
   list(
     fit.rank.seniority.dpj.cdp, 
     fit.rank.incumbency.dpj.cdp, 
@@ -807,11 +826,13 @@ screenreg(
     "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
-  caption = "Regression Results for DPJ / CDP Candidates"
+  caption = "Regression Results for DPJ / CDP Candidates", 
+  file = "./table/regression_results_dpj_cdp.tex", 
+  label = "tab:dpj_cdp"
 )
 
 # Komeito
-screenreg(
+texreg(
   list(
     fit.rank.seniority.komeito, 
     fit.rank.incumbency.komeito, 
@@ -850,11 +871,13 @@ screenreg(
     "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
-  caption = "Regression Results for Komeito Candidates"
+  caption = "Regression Results for Komeito Candidates", 
+  file = "./table/regression_results_komeito.tex",
+  label = "tab:komeito"
 )
 
 # JCP
-screenreg(
+texreg(
   list(
     fit.rank.seniority.jcp, 
     fit.rank.incumbency.jcp, 
@@ -893,11 +916,13 @@ screenreg(
     "dual listing status (columns 5-7), and whether the candidate has a tie on the list (columns 8-10).\n", 
     "\\item Estimated models: negatige binomial (columns 1-4) and logit (columns 5-10)."
   ), 
-  caption = "Regression Results for JCP Candidates"
+  caption = "Regression Results for JCP Candidates", 
+  file = "./table/regression_results_jcp.tex",
+  label = "tab:jcp"
 )
 
 # 2005 and 2012 LDP
-screenreg(
+texreg(
   list(
     fit.rank.ldp.2005, 
     fit.dual.ldp.2005, 
@@ -938,7 +963,9 @@ screenreg(
     "\\item Estimated models: negatige binomial (columns 1 / 4) and logit (columns 2-3, 5-6). \n", 
     "\\textit{Note.} All dual-listed LDP candidates in the 2012 general election had ties on the list."
   ), 
-  caption = "Regression Results for JCP Candidates"
+  caption = "Regression Results for LDP Candidates in 2005 and 2012",
+  file = "./table/regression_results_ldp_2005_2012.tex",
+  label = "tab:ldp_2005_2012"
 )
 
 
