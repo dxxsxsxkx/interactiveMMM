@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  7 DEC 2024 18:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  7 DEC 2024 18:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -675,14 +675,14 @@ Overfull \hbox (43.65161pt too wide) in paragraph at lines 44--45
  [] 
  []
 
-) [13] [14]
-<../figure/paper/marginal_effects_rank.pdf, id=386, 578.16pt x 433.62pt>
+) [13]
+<../figure/paper/marginal_effects_rank.pdf, id=376, 578.16pt x 433.62pt>
 File: ../figure/paper/marginal_effects_rank.pdf Graphic file (type pdf)
 <use ../figure/paper/marginal_effects_rank.pdf>
 Package pdftex.def Info: ../figure/paper/marginal_effects_rank.pdf  used on inp
 ut line 224.
 (pdftex.def)             Requested size: 407.66833pt x 305.74846pt.
-
+ [14]
 
 LaTeX Warning: Reference `marginal_dual' on page 15 undefined on input line 233
 .
@@ -711,7 +711,7 @@ Overfull \hbox (6.38469pt too wide) in paragraph at lines 44--45
 
 ) [18] [19] [20] (../table/regression_results_ldp_2005_2012.tex) [21] [22]
 [23] [24] (../table/tab.age.intl.tex)
-<../figure/paper/age_smd_vs_pr_winners.pdf, id=493, 578.16pt x 433.62pt>
+<../figure/paper/age_smd_vs_pr_winners.pdf, id=494, 578.16pt x 433.62pt>
 File: ../figure/paper/age_smd_vs_pr_winners.pdf Graphic file (type pdf)
 <use ../figure/paper/age_smd_vs_pr_winners.pdf>
 Package pdftex.def Info: ../figure/paper/age_smd_vs_pr_winners.pdf  used on inp
@@ -865,7 +865,7 @@ ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/tex
 mf-dist/fonts/type1/public/cm-super/sfrm0600.pfb></usr/local/texlive/2024/texmf
 -dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2024/texmf-d
 ist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on ageNomination.pdf (40 pages, 397558 bytes).
+Output written on ageNomination.pdf (40 pages, 397449 bytes).
 PDF statistics:
  741 PDF objects out of 1000 (max. 8388607)
  636 compressed objects within 7 object streams
