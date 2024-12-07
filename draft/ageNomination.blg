@@ -7,45 +7,45 @@ Warning--empty note in hiranoPolicyPositionsMixed2011
 Warning--empty journal in lemondeHowDoesItalian2022
 Warning--empty journal in theasahishimbunSenkyoseidoshinNoGijiroku1991
 Warning--empty journal in theasahishimbunNakasoneMiyazawaRyou2006
-You've used 48 entries,
+You've used 58 entries,
             1935 wiz_defined-function locations,
-            782 strings with 15323 characters,
-and the built_in function-call counts, 17481 in all, are:
-= -- 1770
-> -- 586
-< -- 42
-+ -- 200
-- -- 184
-* -- 1452
-:= -- 3058
-add.period$ -- 139
-call.type$ -- 48
-change.case$ -- 331
-chr.to.int$ -- 48
-cite$ -- 52
-duplicate$ -- 672
-empty$ -- 1248
-format.name$ -- 266
-if$ -- 3389
+            843 strings with 17174 characters,
+and the built_in function-call counts, 20883 in all, are:
+= -- 2109
+> -- 684
+< -- 50
++ -- 230
+- -- 214
+* -- 1731
+:= -- 3664
+add.period$ -- 169
+call.type$ -- 58
+change.case$ -- 392
+chr.to.int$ -- 58
+cite$ -- 62
+duplicate$ -- 810
+empty$ -- 1510
+format.name$ -- 308
+if$ -- 4048
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 42
-newline$ -- 237
-num.names$ -- 146
-pop$ -- 233
+missing$ -- 54
+newline$ -- 287
+num.names$ -- 176
+pop$ -- 283
 preamble$ -- 1
-purify$ -- 331
+purify$ -- 396
 quote$ -- 0
-skip$ -- 545
+skip$ -- 649
 stack$ -- 0
-substring$ -- 1330
-swap$ -- 71
+substring$ -- 1584
+swap$ -- 81
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 284
+type$ -- 338
 warning$ -- 4
-while$ -- 163
+while$ -- 194
 width$ -- 0
-write$ -- 604
+write$ -- 734
 (There were 4 warnings)

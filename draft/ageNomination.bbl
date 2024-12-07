@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[Ahmed, 2010]{ahmedReadingHistoryForward2010}
+Ahmed, A. (2010).
+\newblock Reading {{History Forward}}: {{The Origins}} of {{Electoral Systems}}
+  in {{European Democracies}}.
+\newblock {\em Comparative Political Studies}, 43(8-9):1059--1088.
+
 \bibitem[Andr{\'e} et~al., 2017]{andrePartyNominationStrategies2017}
 Andr{\'e}, A., Depauw, S., Shugart, M.~S., and Chytilek, R. (2017).
 \newblock Party nomination strategies in flexible-list systems: {{Do}}
@@ -12,6 +18,12 @@ Bawn, K. and Thies, M.~F. (2003).
   {{Representing}} the {{Unorganized Under PR}}, {{Plurality}} and
   {{Mixed-Member Electoral Systems}}.
 \newblock {\em Journal of Theoretical Politics}, 15(1):5--32.
+
+\bibitem[Boix, 1999]{boixSettingRulesGame1999}
+Boix, C. (1999).
+\newblock Setting the {{Rules}} of the {{Game}}: {{The Choice}} of {{Electoral
+  Systems}} in {{Advanced Democracies}}.
+\newblock {\em American Political Science Review}, 93(3):609--624.
 
 \bibitem[Buisseret et~al., 2022]{buisseretPartyNominationStrategies2022}
 Buisseret, P., Folke, O., Prato, C., and Rickne, J. (2022).
@@ -48,6 +60,11 @@ Crutzen, B. S.~Y., Flamand, S., and Sahuguet, N. (2020).
 \newblock A model of a team contest, with an application to incentives under
   list proportional representation.
 \newblock {\em Journal of Public Economics}, 182:104109.
+
+\bibitem[Cusack et~al., 2007]{cusackEconomicInterestsOrigins2007}
+Cusack, T.~R., Iversen, T., and Soskice, D. (2007).
+\newblock Economic {{Interests}} and the {{Origins}} of {{Electoral Systems}}.
+\newblock {\em American Political Science Review}, 101(3):373--391.
 
 \bibitem[Dancygier, 2014]{dancygierElectoralRulesElectoral2014}
 Dancygier, R.~M. (2014).
@@ -135,6 +152,12 @@ Krauss, E., Nemoto, K., and Pekkanen, R. (2012).
 {Le Monde} (2022).
 \newblock How does the {{Italian}} electoral system work?
 
+\bibitem[Manow, 2007]{manowElectoralRulesLegislative2007}
+Manow, P. (2007).
+\newblock Electoral rules and legislative turnover: {{Evidence}} from
+  {{Germany}}'s mixed electoral system.
+\newblock {\em West European Politics}, 30(1):195--207.
+
 \bibitem[Matakos et~al., 2024]{matakosElectoralInstitutionsIntraparty2024}
 Matakos, K., Savolainen, R., Troumpounis, O., Tukiainen, J., and Xefteris, D.
   (2024).
@@ -154,6 +177,18 @@ Matland, R.~E. and Studlar, D.~T. (1996).
   and {{Norway}}.
 \newblock {\em The Journal of Politics}, 58(3):707--733.
 
+\bibitem[Matland and Studlar, 2004]{matlandDeterminantsLegislativeTurnover2004}
+Matland, R.~E. and Studlar, D.~T. (2004).
+\newblock Determinants of {{Legislative Turnover}}: {{A Cross-National
+  Analysis}}.
+\newblock {\em British Journal of Political Science}, 34(1):87--108.
+
+\bibitem[McClean, 2020]{mccleanSilverDemocracyYouth2020}
+McClean, C.~T. (2020).
+\newblock {\em Silver {{Democracy}}: {{Youth Representation}} in an {{Aging
+  Japan}}}.
+\newblock PhD thesis, UC San Diego.
+
 \bibitem[McKean and Scheiner, 2000]{mckeanJapansNewElectoral2000}
 McKean, M. and Scheiner, E. (2000).
 \newblock Japan's new electoral system: La plus {\c c}a change ...
@@ -162,7 +197,7 @@ McKean, M. and Scheiner, E. (2000).
 \bibitem[Meserve et~al., 2020]{meserveGenderIncumbencyParty2020}
 Meserve, S.~A., Pemstein, D., and Bernhard, W.~T. (2020).
 \newblock Gender, {{Incumbency}} and {{Party List Nominations}}.
-\newblock {\em British Journal of Political Science.}, 50(1):1--15.
+\newblock {\em British Journal of Political Science}, 50(1):1--15.
 
 \bibitem[{Ministry of Internal Affairs and Communications},
   2024]{ministryofinternalaffairsandcommunicationsElectionSenkyo2024}
@@ -186,6 +221,11 @@ Nemoto, K. and Shugart, M.~S. (2013).
 Nishikawa, M. and Herron, E.~S. (2004).
 \newblock Mixed electoral rules' impact on party systems.
 \newblock {\em Electoral Studies}, 23(4):753--768.
+
+\bibitem[Norris, 2004]{norrisElectoralEngineeringVoting2004}
+Norris, P. (2004).
+\newblock {\em Electoral Engineering: Voting Rules and Political Behavior}.
+\newblock Cambridge University Press, Cambridge, UK.
 
 \bibitem[O'Grady and Wiedemann, 2024]{ogradyHowGeographicClustering2024}
 O'Grady, T. and Wiedemann, A. (2024).
@@ -222,10 +262,23 @@ Reed, S.~R. and Smith, D.~M. (2017).
 \newblock The {{Reed-Smith Japanese House}} of {{Representatives Elections
   Dataset}}.
 
+\bibitem[Rokkan, 1970]{rokkanCitizensElectionsParties1970}
+Rokkan, S. (1970).
+\newblock {\em Citizens, Elections, Parties : {{Approaches}} to the Comparative
+  Study of the Processes of Development}.
+\newblock Universitetsforlaget, Oslo.
+
 \bibitem[Salmond, 2006]{salmondProportionalRepresentationFemale2006}
 Salmond, R. (2006).
 \newblock Proportional {{Representation}} and {{Female Parliamentarians}}.
 \newblock {\em Legislative Studies Quarterly}, 31(2):175--204.
+
+\bibitem[Shugart et~al., 2005]{shugartLookingLocalsVoter2005}
+Shugart, M., Valdini, M.~E., and Suominen, K. (2005).
+\newblock Looking for {{Locals}}: {{Voter Information Demands}} and {{Personal
+  Vote-Earning Attributes}} of {{Legislators}} under {{Proportional
+  Representation}}.
+\newblock {\em American Journal of Political Science}, 49(2):14.
 
 \bibitem[Shugart and Wattenberg, 2003]{shugartMixedmemberElectoralSystems2003}
 Shugart, M.~S. and Wattenberg, M.~P. (2003).
@@ -278,6 +331,11 @@ Teele, D.~L. (2024).
 {The Central Electoral Commission of the Republic of Lithuania} (2024).
 \newblock Elections and {{Referendum}}.
 \newblock https://www.vrk.lt/en/2024-seimo.
+
+\bibitem[Uchiyama, 2007]{uchiyamaKoizumiSeikenKoizumis2007}
+Uchiyama, Y. (2007).
+\newblock {\em {Koizumi Seiken (Koizumi's Administration)}}.
+\newblock Chuo Koron Shinsha, Tokyo.
 
 \bibitem[Wiedemann, 2024]{wiedemannRedistributivePoliticsSpatial2024}
 Wiedemann, A. (2024).
