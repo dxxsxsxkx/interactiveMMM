@@ -199,12 +199,13 @@ data.dual <- data.dual.total %>%
 
 # Figure 1
 data.dual %>% 
+  filter(party_en == "Total") |>  # I changed my mind ...
   ggplot() +
   geom_line(
     aes(
       x = year, 
-      y = prop_dual, 
-      color = party_en
+      y = prop_dual#, 
+      #color = party_en
     ), 
     linewidth = 1
   ) +
